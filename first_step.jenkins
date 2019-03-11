@@ -15,12 +15,13 @@ pipeline {
       steps {
         sh "whoami"
         sh "hostname"
+        sh "ssh k8s-master 'hostname'"
       }
     }
-    //stage( "Check exist ansible" ){
-    //  steps {
-    //    sh "ansible --version"
-    //  }
-    //}
+    stage( "Check exist ansible" ){
+      steps {
+        sh "ansible --version"
+      }
+    }
   }
 }
