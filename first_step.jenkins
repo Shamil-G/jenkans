@@ -13,7 +13,6 @@ pipeline {
   stages {
     stage( "Request hostname" ){
       steps {
-# sh 'ssh worker-node1 \'hostname\''
         sh 'ssh localhost \'hostname\''
       }
     }
