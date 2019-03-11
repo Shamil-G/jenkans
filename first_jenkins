@@ -11,7 +11,7 @@ pipeline {
     timestamps()
   }
   stages {
-    stage( "Preparations" ){
+    stage( "Request hostname" ){
       steps {
         sh 'ssh worker-node1 \'hostname\''
       }
