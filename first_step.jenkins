@@ -13,7 +13,8 @@ pipeline {
   stages {
     stage( "Request hostname" ){
       steps {
-        sh 'ssh localhost \'hostname\''
+        whoami
+        //sh 'ssh localhost \'hostname\''
       }
     }
     //stage( "Check exist ansible" ){
