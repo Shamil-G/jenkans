@@ -17,10 +17,10 @@ pipeline {
         //sh 'ssh localhost \'hostname\''
       }
     }
-    //stage( "Check exist ansible" ){
-    //  steps {
-    //    ansible --version
-    //  }
-    //}
+    stage( "Check exist ansible" ){
+      steps {
+        sh 'ansible --version'
+      }
+    }
   }
 }
