@@ -16,8 +16,6 @@ pipeline {
         sh 'ssh worker-node1 \'hostname\''
       }
     }
-  }
-  stages {
     stage( "Check exist ansible" ){
       steps {
         sh 'ansible --version'
