@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage( "Request hostname" ){
       steps {
-        //sh "whoami"
+        sh "whoami"
         sh "ssh 192.168.110.132 'hostname'"
       }
     }
