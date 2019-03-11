@@ -14,7 +14,7 @@ pipeline {
     stage( "Request hostname" ){
       steps {
         //sh "whoami"
-        sh "ssh localhost 'hostname'"
+        sh "ssh k8s-master 'hostname'"
       }
     }
     //stage( "Check exist ansible" ){
