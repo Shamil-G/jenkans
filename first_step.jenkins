@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage( "Request hostname" ){
       steps {
-        whoami
+        sh 'whoami'
         //sh 'ssh localhost \'hostname\''
       }
     }
