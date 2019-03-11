@@ -19,7 +19,7 @@ pipeline {
     }
     stage( "Check exist ansible" ){
       steps {
-        sh -c 'ansible --version'
+        sh ansible --version
       }
     }
   }
