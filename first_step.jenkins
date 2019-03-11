@@ -17,4 +17,11 @@ pipeline {
       }
     }
   }
+  stages {
+    stage( "Check exist ansible" ){
+      steps {
+        sh 'ansible --version'
+      }
+    }
+  }
 }
