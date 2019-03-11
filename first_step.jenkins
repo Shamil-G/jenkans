@@ -11,15 +11,15 @@ pipeline {
     timestamps()
   }
   stages {
-//stage( "Request hostname" ){
-//  steps {
-//    sh 'ssh localhost \'hostname\''
-//  }
-//}
-    stage( "Check exist ansible" ){
+    stage( "Request hostname" ){
       steps {
-        ansible --version
+        sh 'ssh localhost \'hostname\''
       }
     }
+    //stage( "Check exist ansible" ){
+    //  steps {
+    //    ansible --version
+    //  }
+    //}
   }
 }
