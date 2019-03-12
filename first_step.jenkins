@@ -15,12 +15,12 @@ pipeline {
       steps {
         sh "whoami"
         sh "hostname"
-        sh "ssh k8s-master 'hostname'"
+        sh "ssh localhost 'whoami'"
       }
     }
     stage( "Check exist ansible" ){
       steps {
-        sh "ansible --version"
+        ssh "ansible --version"
       }
     }
   }
