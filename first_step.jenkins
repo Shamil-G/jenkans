@@ -15,12 +15,12 @@ pipeline {
       steps {
         sh "whoami"
         sh "hostname"
-        sh "ssh localhost 'whoami'"
       }
     }
     stage( "Check exist ansible" ){
       steps {
-        ssh "ansible --version"
+        sh "ssh localhost 'whoami'"
+        sh "ssh localhost 'ansible-playbook --version'"
       }
     }
   }
