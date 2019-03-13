@@ -18,12 +18,7 @@ pipeline {
     }
     stage( "Update Git" ){
       steps {
-        sh "cd git"
-        sh "pwd"
-        sh "git pull"
-        sh "ls -al jenkins"
-        sh "ls -al jenkins/egz"
-        sh "ls -al jenkins/egz/ansible"
+        sh "ssh localhost 'cd git && pwd && git pull && ls -al jenkins && ls -al jenkins/egz && ls -al jenkins/egz/ansible'"
       }
     }
     stage( "Install softWare" ){
