@@ -14,7 +14,16 @@ pipeline {
     stage( "Check exist ansible" ){
       steps {
         sh "ssh localhost 'whoami'"
-        sh "ssh localhost 'ansible-playbook --version'"
+      }
+    }
+    stage( "Update Git" ){
+      steps {
+        sh "cd git"
+        sh "pwd"
+        sh "git pull"
+        sh "ls -al jenkins"
+        sh "ls -al jenkins/egz"
+        sh "ls -al jenkins/egz/ansible"
       }
     }
     stage( "Install softWare" ){
