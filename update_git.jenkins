@@ -18,7 +18,7 @@ pipeline {
     }
     stage( "Update Git" ){
       steps {
-        sh "cd git/jenkins && git pull'"
+        sh "mkdir -p ~/git && cd ~/git/jenkins && git pull'"
 //        sh "ssh localhost 'cd git/jenkins && pwd && git pull'"
       }
     }
