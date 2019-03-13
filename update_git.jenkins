@@ -37,7 +37,7 @@ pipeline {
         sh "git config --global user.name 'Shamil-G'"
         sh "git config --global user.email 's.gusseynov@gmail.com'"
         sh "git config --list"
-        sh "cd ~/git && git pull"
+        sh "cd ~/git/jenkins && git pull"
         //sh "cd ~/git && git clone https://github.com/Shamil-G/jenkins"
         //sh "ssh localhost 'cd git/jenkins && pwd && git pull'"
       }
