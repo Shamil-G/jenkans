@@ -3,5 +3,5 @@
   become: yes
   
   tasks:
-  - name: Install PHP
+  - name: Check Version PHP
     shell: yum info php | grep Version
