@@ -21,4 +21,5 @@ pipeline {
         sh "ssh localhost 'cd git/jenkins && pwd && git pull'"
       }
     }
+  }
 }
