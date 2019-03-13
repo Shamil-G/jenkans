@@ -19,9 +19,9 @@ pipeline {
     stage( "Update Git" ){
       steps {
         sh "mkdir -p ~/git" 
-        sh "git config –global user.name 'Shamil-G'"
-        sh "git config –global user.email 's.gusseynov@gmail.com'"
-        sh "git config list"
+        sh "git config --global user.name 'Shamil-G'"
+        sh "git config --global user.email 's.gusseynov@gmail.com'"
+        sh "git config --list"
         sh "cd ~/git && git init && git pull'"
 //        sh "ssh localhost 'cd git/jenkins && pwd && git pull'"
       }
