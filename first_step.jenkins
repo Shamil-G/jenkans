@@ -11,16 +11,14 @@ pipeline {
     timestamps()
   }
   stages {
-    stage( "Request hostname" ){
-      steps {
-        sh "whoami"
-        sh "hostname"
-      }
-    }
     stage( "Check exist ansible" ){
       steps {
         sh "ssh localhost 'whoami'"
         sh "ssh localhost 'ansible-playbook --version'"
+      }
+    }
+    stage( "Install softWare" ){
+      steps {
         sh "ssh localhost 'ansible-playbook egz/install-software.yml'"
       }
     }
