@@ -11,8 +11,7 @@ node {
 
         // A sleep to make sure we actually get a real difference!
         stage "Sleeping"
-        sleep 30
-
+        echo $USER
         // And a final echo to show the time when we wrap up.
         stage "Second echo"
         echo "Wonder what time it is now?"
@@ -23,11 +22,19 @@ pipeline {
   agent {
     label 'master'
   }
+  agent {
+        docker { image 'node:7-alpine' }
+  }    
   options {
     buildDiscarder( logRotator( numToKeepStr: '7', artifactNumToKeepStr: '7') )
     timestamps()
   }
   stages {
+    stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+    }      
     stage( "Check user" ){
       steps {
         sh "ssh localhost 'whoami'"
