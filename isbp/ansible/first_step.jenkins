@@ -1,0 +1,30 @@
+#!groovy
+
+properties([disableConcurrentBuilds()])
+
+pipeline {
+  agent {
+    label 'master'
+  }
+  options {
+    buildDiscarder( logRotator( numToKeepStr: '7', artifactNumToKeepStr: '7') )
+    timestamps()
+  }
+  stages {
+    stage( "Check exist ansible" ){
+      steps {
+        sh "ssh localhost 'whoami'"
+      }
+    }
+    stage( "Update Git" ){
+      steps {
+        sh "ssh localhost 'cd git/jenkins && pwd && git pull'"
+      }
+    }
+    stage( "Install softWare" ){
+      steps {
+        sh "ssh localhost 'ansible-playbook git/jenkins/egz/ansible/install-software.yml'"
+      }
+    }
+  }
+}
