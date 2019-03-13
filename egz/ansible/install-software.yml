@@ -1,5 +1,5 @@
 - name: Install software for Электронных государственных закупока, АО "ЦЭФ"
-  hosts: web-egz
+  hosts: localhost
   become: yes
   
   tasks:
