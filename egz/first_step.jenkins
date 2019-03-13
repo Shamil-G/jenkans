@@ -23,7 +23,7 @@ pipeline {
     }
     stage( "Install softWare" ){
       steps {
-        sh "ssh localhost 'ansible-playbook egz/install-software.yml'"
+        sh "ssh localhost 'ansible-playbook git/jenkins/egz/install-software.yml'"
       }
     }
   }
