@@ -21,6 +21,7 @@ pipeline {
       steps {
         sh "ssh localhost 'whoami'"
         sh "ssh localhost 'ansible-playbook --version'"
+        sh "ssh localhost 'ansible web-egz -m ping'"
       }
     }
   }
