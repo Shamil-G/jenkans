@@ -5,3 +5,7 @@
   tasks:
   - name: Check Version PHP
     shell: yum info php | grep Version
+    register: result
+    
+  - name: Show Version PHP
+    debug: result
