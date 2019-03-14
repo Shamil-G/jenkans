@@ -10,3 +10,8 @@
   - debug: 
       var: result
   - debug: var=result.stdout
+  
+  - shell: uptime
+    register: result
+    
+  - debug: var=result
