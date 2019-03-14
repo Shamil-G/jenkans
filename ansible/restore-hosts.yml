@@ -1,4 +1,4 @@
-- name: Install software for Электронных государственных закупока, АО "ЦЭФ"
+- name: Restore HOSTS file for Ansible
   hosts: web-egz
   become: yes
   
@@ -10,4 +10,4 @@
   - name: Stop and Update Docker
     shell: cp ~/git/jenkins/ansible/hosts /etc/ansible/hosts
     when: not res.stat.exists
-    
+   
