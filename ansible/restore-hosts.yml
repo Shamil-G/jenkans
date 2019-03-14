@@ -2,12 +2,10 @@
   hosts: web-egz
   become: yes
   
+  vars:
+    src_file: /home/jenkins/git/jenkins/ansible/hosts 
+    dest_file: /etc/ansible/hosts
+  
   tasks:
-  - name: Check Existing /etc/ansible/hosts
-    stat: path=/etc/ansible/hosts
-    register: res
-    
-  - name: Stop and Update Docker
-    shell: cp ~/git/jenkins/ansible/hosts /etc/ansible/hosts
-    when: not res.stat.exists
-   
+  - name: Copy HOSTS file
+    copy: src={{ src_hosts }} dest={{ dest_hosts }}   
