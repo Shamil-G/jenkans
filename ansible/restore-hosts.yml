@@ -1,5 +1,5 @@
 - name: Restore HOSTS file for Ansible
-  hosts: web-egz
+  hosts: localhost
   become: yes
   
   vars:
