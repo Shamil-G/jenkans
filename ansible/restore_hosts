@@ -1,0 +1,13 @@
+- name: Install software for Электронных государственных закупока, АО "ЦЭФ"
+  hosts: web-egz
+  become: yes
+  
+  tasks:
+  - name: Check Existing /etc/ansible/hosts
+    stat: path=/etc/ansible/hosts
+    register: res
+    
+  - name: Stop and Update Docker
+    shell: cp ~/git/jenkins/ansible/hosts /etc/ansible/hosts
+    when: not res.stat.exists
+    
