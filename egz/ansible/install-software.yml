@@ -6,4 +6,19 @@
     shell: yum info php | grep Version
     register: result
     
+  - name: Stop docker
+    shell: systemctl stop docker
+    register: result
   - debug: var=result.stdout
+
+
+  - name: Update docker
+    shell: yum update docker
+    register: result
+  - debug: var=result.stdout
+    
+  - name: Start docker
+    shell: systemctl start docker
+    register: result
+  - debug: var=result.stdout
+  
