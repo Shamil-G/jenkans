@@ -7,5 +7,4 @@
     shell: yum info php | grep Version
     register: result
     
-  - name: Show Version PHP
-    debug: result
+  - debug: result
