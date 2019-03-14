@@ -9,3 +9,4 @@
     
   - debug: 
       var: result
+  - debug: var=result.stdout
