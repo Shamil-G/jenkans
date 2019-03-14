@@ -1,2 +1,2 @@
-import-playbook: /home/jenkins/git/jenkins/ansible/restore-hosts.yml
-import-playbook: /home/jenkins/git/jenkins/ansible/install-docker.yml
+- import_playbook: /home/jenkins/git/jenkins/ansible/restore-hosts.yml
+- import_playbook: /home/jenkins/git/jenkins/ansible/install-docker.yml
