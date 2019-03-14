@@ -5,20 +5,16 @@
   - name: Check Version PHP
     shell: yum info php | grep Version
     register: result
-    
+  - debug: var=result.stdout
+ 
   - name: Stop docker
     shell: systemctl stop docker
-    register: result
-  - debug: var=result.stdout
-
 
   - name: Update docker
-    shell: yum update docker
-    register: result
-  - debug: var=result.stdout
+    shell: yum update docker 
     
   - name: Start docker
-    shell: systemctl start docker
+    shell: systemctl start docker && docker info
     register: result
   - debug: var=result.stdout
   
