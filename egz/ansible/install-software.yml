@@ -1,5 +1,6 @@
 - name: Install software for Электронных государственных закупока, АО "ЦЭФ"
   hosts: web-egz
+  become: yes
   
   tasks:
   - name: Check Version PHP
