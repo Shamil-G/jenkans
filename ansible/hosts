@@ -1,0 +1,34 @@
+# This is the default ansible 'hosts' file.
+#
+# It should live in /etc/ansible/hosts
+#
+#   - Comments begin with the '#' character
+#   - Blank lines are ignored
+#   - Groups of hosts are delimited by [header] elements
+#   - You can enter hostnames or ip addresses
+#   - A hostname/ip can be a member of multiple groups
+
+[web-egz]
+worker-node1 ansible_host=192.168.200.149 owner=ansible
+worker-node2 ansible_host=192.168.200.151 owner=ansible
+
+[web-isgp]
+worker-node1 ansible_host=192.168.200.149 owner=ansible
+worker-node2 ansible_host=192.168.200.151 owner=ansible
+
+[web:children]
+web-egz
+web-isgp
+
+# If you have multiple hosts following a pattern you can specify
+# them like this:
+
+## www[001:006].example.com
+
+[db-egz]
+
+[db-isgp]
+
+[db:children]
+db-egz
+db-isgp
