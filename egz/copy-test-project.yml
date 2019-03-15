@@ -16,12 +16,11 @@
   - debug: var=cur_dir.stdout
   
   - name: ===> Shutdown docker-compose
-    shell: docker-compose down -f {{ dest_dir }}/docker-compose.yml
+    shell: cd {{ dest_dir }} && docker-compose down
     ignore_errors: yes
     
   - name: ===> Start docker-compose
-    shell: pwd 
-#     docker-compose up -d
+    shell: cd {{ dest_dir }} && docker-compose up -d
     register: st
     
   - debug: var=st.stdout
