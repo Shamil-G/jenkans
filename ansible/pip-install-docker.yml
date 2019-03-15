@@ -7,7 +7,7 @@
     stat: path=/usr/bin/pip
     register: pip-stat
     
-  -block:
+  - block:
   
     - name: ===> Install repository PIP
       shell: yum install epel-release 
@@ -16,7 +16,7 @@
       shell: yum install python-pip
 #     check_mode: yes
     
-  when: not pip_stat.stat.exists
+    when: not pip_stat.stat.exists
 
 #   - name: ===> Install Docker
 #     shell: pip -y install docker && pip -y install 'docker-compose>=1.7.0'
