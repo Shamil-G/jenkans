@@ -8,3 +8,18 @@
   tasks:
   - name: Copy DOCKER
     copy: src={{ src_dir }} dest={{ dest_dir }}
+    
+  - name: ===> Change current dir
+    shell: cd {{ dest_dir }} && pwd
+    register: cur_dir
+    
+  - debug: vars=cur_dir
+  
+  - name: ===> Shutdown docker-compose
+    shell: docker-compose down
+    
+  - name: ===> Start docker-compose
+    shell: docker-compose up -d
+    register: _start
+    
+  - debug: vars = _start
