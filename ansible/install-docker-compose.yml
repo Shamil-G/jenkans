@@ -1,4 +1,4 @@
-- name: install Docker for Ansible
+- name: -----> install-docker-compose
   hosts: web-egz
   become: yes
   
@@ -8,8 +8,7 @@
     register: status
     
   - block:
-  
-      tasks:
+        tasks:
       - name: Download Compose 
         shell: curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     
