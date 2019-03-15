@@ -1,4 +1,4 @@
-- name: -----> install-docker-compose
+- name: =====> install-docker-compose
   hosts: web-egz
   become: yes
   
@@ -16,4 +16,4 @@
 
     - name: Set permission
       shell: chmod +x /usr/local/bin/docker-compose
-  when: not status.stat.exists
+    when: not status.stat.exists
