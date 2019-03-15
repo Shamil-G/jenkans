@@ -1,4 +1,4 @@
-ROM scratch
+FROM scratch
 
 COPY /bin/* /usr/bin/
 
