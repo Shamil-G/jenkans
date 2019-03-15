@@ -2,13 +2,13 @@ version: '3.3'
 services:
   hello:
     build:
-      context: ./hello
+      context: ./user_app
       dockerfile: Dockerfile
       args:
-        buildno: 1.5
-    image: hello:1.5
+        buildno: 1.0
+    image: egz-test:1.0
     environment:
-        USER: 'SHAMIL'
+        USER: 'shamil'
     env_file:
       - ./common_env.txt
       - ./project_environment.txt
@@ -27,8 +27,8 @@ services:
       - /bin/sh
     networks:
       - my_busy
-    domainname: shamil.com
-    hostname: hello-shamil
+    domainname: test-egz.kz
+    hostname: web
 
   busybox:
     build:
@@ -47,8 +47,8 @@ services:
       - /bin/sh
     networks:
       - my_busy
-    domainname: shamil.com
-    hostname: k8s-shamil
+    domainname: test_egz.kz
+    hostname: web
 
 networks:
   my_busy:
