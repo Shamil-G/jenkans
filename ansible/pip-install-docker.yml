@@ -4,9 +4,10 @@
   
   tasks:
   
-  - name: Install pip
-    shell: yum install epel-release && yum install pip
+  - name: ===> Install pip
+    shell: yum -y install epel-release && yum -y install pip
+    check_mode: yes
     
-  - name: Install Docker
-    shell: pip install docker && pip install 'docker-compose>=1.7.0'
+  - name: ===> Install Docker
+    shell: pip -y install docker && pip -y install 'docker-compose>=1.7.0'
     check_mode: yes
