@@ -3,22 +3,5 @@
   become: yes
   
   tasks:
-  - name: Check Version PHP
-    shell: yum info php | grep Version
-    register: result
-  - debug: var=result.stdout
- 
-  - name: Check Existing Docker
-    stat: path=/usr/bin/docker
-    register: res
-    
-  - name: Stop and Update Docker
-    shell: systemctl stop docker && yum -y update docker
-    when: res.stat.exists
-    
-  - name: NEW install docker
-    shell: yum -y install docker
-    when: not res.stat.exists
-
-  - name: Start Docker
-    shell: systemctl start docker && systemctl enable docker && docker info
+  - name: Install Docker
+    serice: name=httpd state=started enabled=yes
