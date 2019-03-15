@@ -8,4 +8,4 @@
     service: name=docker state=started enabled=yes
     register: res
     
-  - debug: var=res.std.out
+  - debug: var=res.stdout
