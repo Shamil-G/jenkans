@@ -4,8 +4,11 @@
   
   tasks:
   
+  - name: ===> Install repository PIP
+    shell: yum -y install epel-release 
+    
   - name: ===> Install pip
-    shell: yum -y install epel-release && yum -y install pip
+    shell: yum -y install pip
 #     check_mode: yes
     
   - name: ===> Install Docker
