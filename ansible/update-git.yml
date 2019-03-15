@@ -1,5 +1,5 @@
 ---
-- name: Update GIT
+- name: -----> update-git
   hosts: localhost
   
   tasks: 
