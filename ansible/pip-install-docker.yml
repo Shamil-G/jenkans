@@ -5,7 +5,7 @@
   tasks:
   
   - name: Install pip
-    shell: sudo yum install epel-release && yum install pip
+    shell: yum install epel-release && yum install pip
     
   - name: Install Docker
     shell: pip install docker && pip install 'docker-compose>=1.7.0'
