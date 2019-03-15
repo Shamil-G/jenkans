@@ -1,0 +1,2 @@
+NLS_LANG=UTF-8
+export PATH=$PATH:/usr/bin
