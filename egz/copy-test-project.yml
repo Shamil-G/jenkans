@@ -13,13 +13,14 @@
     shell: cd {{ dest_dir }} && pwd
     register: cur_dir
     
-  - debug: var=cur_dir
+  - debug: var=cur_dir.stdout
   
   - name: ===> Shutdown docker-compose
     shell: docker-compose down
+    ignore_errors: yes
     
   - name: ===> Start docker-compose
     shell: docker-compose up -d
     register: st
     
-  - debug: var=st
+  - debug: var=st.stdout
