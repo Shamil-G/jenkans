@@ -2,10 +2,10 @@
   hosts: web-egz
   become: yes
   
-  task:
+  tasks:
   - name: Check exist Compose
     stat: /usr/bin/docker-compose
-    result: status
+    register: status
     
   - block:
   
@@ -18,4 +18,4 @@
 
       - name: Set permission
         shell: chmod +x /usr/local/bin/docker-compose
-    when: status.stat.exists
+    when: not status.stat.exists
