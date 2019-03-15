@@ -3,7 +3,7 @@
 
   vars:
     src_dir: /home/jenkins/git/jenkins/egz/
-    dest_dir: /home/ansible/docker/
+    dest_dir: /home/ansible/docker-egz-test/
 
   tasks:
   - name: Copy DOCKER
