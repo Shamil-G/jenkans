@@ -1,4 +1,4 @@
-- name: Install software for Электронных государственных закупока, АО "ЦЭФ"
+- name: -----> install-docker
   hosts: web-egz
   become: yes
   
