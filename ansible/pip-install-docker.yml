@@ -17,4 +17,3 @@
 
   - name: ===> Install Docker
     shell: pip install docker && pip install 'docker-compose>=1.7.0'
-    check_mode: yes
