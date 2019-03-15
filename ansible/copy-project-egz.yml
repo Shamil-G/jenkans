@@ -1,0 +1,10 @@
+- name: -----> Copy project EGZ
+  hosts: web-egz
+
+  vars:
+  src_dir: path=/home/jenkins/git/jenkins/egz
+  dest_dir: path=/home/ansible/docker
+
+  tasks:
+  - name: Copy DOCKER
+    
