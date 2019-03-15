@@ -6,7 +6,7 @@
     dest_dir: /home/ansible/egz-docker-test
 
   tasks:
-  - name: Copy DOCKER
+  - name: ===> Copy DOCKER
     copy: src={{ src_dir }} dest={{ dest_dir }}
     
   - name: ===> Change current dir
