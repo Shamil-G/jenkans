@@ -4,7 +4,7 @@
   
   tasks:
   - name: Check exist Compose
-    stat: /usr/bin/docker-compose
+    stat: path=/usr/bin/docker-compose
     register: status
     
   - block:
