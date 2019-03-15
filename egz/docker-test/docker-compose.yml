@@ -1,8 +1,58 @@
-version: '3'
+version: '3.3'
 services:
-    web:
-      build: .
-      ports:
-      - "5000:5000"
-    redis:
-      image: "redis:alpine"
+  hello:
+    build:
+      context: ./hello
+      dockerfile: Dockerfile
+      args:
+        buildno: 1.5
+    image: hello:1.5
+    environment:
+        USER: 'SHAMIL'
+    env_file:
+      - ./common_env.txt
+      - ./project_environment.txt
+    depends_on: 
+      - busybox
+    volumes:
+      - type: volume
+        source: my_busybox
+        target: /bin
+        volume:
+          nocopy: true
+      - type: bind
+        source: /lib64
+        target: /lib64
+    command:
+      - /bin/sh
+    networks:
+      - my_busy
+    domainname: shamil.com
+    hostname: hello-shamil
+
+  busybox:
+    build:
+      context: ./busybox
+    image: busybox:1.0
+    environment:
+      USER: 'busybox'
+    env_file:
+      ./project_environment.txt
+    ports:
+        - "80:80"
+        - "443:443"
+    volumes:
+      - "my_busybox:/bin"
+    command:
+      - /bin/sh
+    networks:
+      - my_busy
+    domainname: shamil.com
+    hostname: k8s-shamil
+
+networks:
+  my_busy:
+    driver: bridge
+
+volumes:
+  my_busybox:
