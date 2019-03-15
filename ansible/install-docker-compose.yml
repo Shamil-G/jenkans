@@ -1,4 +1,4 @@
-- name: =====> install-docker-compose
+- name: -----> install-docker-compose
   hosts: web-egz
   become: yes
   
