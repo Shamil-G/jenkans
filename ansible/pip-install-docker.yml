@@ -5,7 +5,7 @@
   tasks:
   - name: ===> Check exist pip
     stat: path=/usr/bin/pip
-    register: pip-stat
+    register: pip_stat
     
   - block:
   
