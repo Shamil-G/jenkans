@@ -1,4 +1,4 @@
-- name: Обновим HOSTS файл для Ansible
+- name: -----> restore-hosts, файл для Ansible в /etc/ansible
   hosts: localhost
   become: yes
   
