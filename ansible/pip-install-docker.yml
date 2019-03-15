@@ -1,4 +1,4 @@
-- name: Install docker for Ansible
+- name: -----> pip-install-docker for Ansible
   hosts: web-egz
   become: yes
   
