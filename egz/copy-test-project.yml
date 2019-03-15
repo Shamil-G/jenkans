@@ -20,6 +20,6 @@
     
   - name: ===> Start docker-compose
     shell: docker-compose up -d
-    register: _start
+    register: st
     
-  - debug: vars = _start
+  - debug: vars=st
