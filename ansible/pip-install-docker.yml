@@ -6,7 +6,7 @@
   
   - name: ===> Install pip
     shell: yum -y install epel-release && yum -y install pip
-//    check_mode: yes
+#     check_mode: yes
     
   - name: ===> Install Docker
     shell: pip -y install docker && pip -y install 'docker-compose>=1.7.0'
