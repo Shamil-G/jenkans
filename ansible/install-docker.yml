@@ -3,5 +3,6 @@
   become: yes
   
   tasks:
+  
   - name: Install Docker
-    serice: name=httpd state=started enabled=yes
+    serice: name=dockerd state=started enabled=yes
