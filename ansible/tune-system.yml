@@ -1,4 +1,6 @@
 - import_playbook: /home/jenkins/git/jenkins/ansible/update-git.yml
 - import_playbook: /home/jenkins/git/jenkins/ansible/restore-hosts.yml
 - import_playbook: /home/jenkins/git/jenkins/ansible/install-docker.yml
+- import_playbook: /home/jenkins/git/jenkins/ansible/pip-install-docker.yml
 - import_playbook: /home/jenkins/git/jenkins/ansible/install-docker-compose.yml
+
