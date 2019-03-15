@@ -1,5 +1,5 @@
 - name: install Docker for Ansible
-  hosts: localhost
+  hosts: web-egz
   become: yes
   
   task:
@@ -7,14 +7,15 @@
     stat: /usr/bin/docker-compose
     result: status
     
-  - name: Install Compose
-    tasks:
-    - name: Download  
-      shell: curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  - block:
+  
+      tasks:
+      - name: Download Compose 
+        shell: curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     
-    - name: Link Compose to /usr/bin
-      shell: ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+      - name: Link Compose to /usr/bin
+        shell: ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
-    - name: Set permission
-      shell: chmod +x /usr/local/bin/docker-compose
+      - name: Set permission
+        shell: chmod +x /usr/local/bin/docker-compose
     when: status.stat.exists
