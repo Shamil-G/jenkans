@@ -2,7 +2,7 @@
   hosts: web-egz
 
   vars:
-    src_dir: path=/home/jenkins/git/jenkins/egz
+    src_dir: path=/home/jenkins/git/jenkins/egz/
     dest_dir: path=/home/ansible/docker
 
   tasks:
