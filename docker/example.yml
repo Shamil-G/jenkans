@@ -1,6 +1,4 @@
 - name: pull an image
   hosts: web-egz
-
-  tasks:
-    - docker_image:
+  docker_image:
       name: pacur/centos-7
