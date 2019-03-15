@@ -5,4 +5,4 @@
   tasks:
   
   - name: Install Docker
-    serice: name=dockerd state=started enabled=yes
+    service: name=dockerd state=started enabled=yes
