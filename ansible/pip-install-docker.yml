@@ -8,16 +8,13 @@
     register: pip_stat
     
   - block:
-  
     - name: ===> Install repository PIP
       shell: yum install epel-release 
     
     - name: ===> Install pip
-      shell: yum install python-pip
-#     check_mode: yes
-    
+      shell: yum install python-pip 
     when: not pip_stat.stat.exists
 
-#   - name: ===> Install Docker
-#     shell: pip -y install docker && pip -y install 'docker-compose>=1.7.0'
-#     check_mode: yes
+   - name: ===> Install Docker
+     shell: pip install docker && pip install 'docker-compose>=1.7.0'
+     check_mode: yes
