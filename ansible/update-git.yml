@@ -6,26 +6,27 @@
   - name: Check exists GIT dir
     stat: path=~/git/jenkins
     register: stat_dir
-    
+  
   - name: Create GIT dir
-    shell: mkdir -p ~/git 
+    shell: mkdir -p ~/git
     when: not stat_dir.stat.exists
     
   - name: Check exists Git
     stat: path=/usr/bin/git
     register: stat_git
+
+  - block:
     
-  - name: Install GIT
-    shell: sudo yum install git
-    when: not stat_git.stat.exists
-    
-  - name: Configure Repository
-    shell: git config --global user.name 'Shamil-G' && git config --global user.email 's.gusseynov@gmail.com'
-    when: not stat_git.stat.exists
-    
-  - name: Clone repository
-    shell: cd ~/git && git clone https://github.com/Shamil-G/jenkins
-    when: not stat_git.stat.exists
+    - name: Install GIT
+      shell: sudo yum install git
+
+    - name: Configure Repository
+      shell: git config --global user.name 'Shamil-G' && git config --global user.email 's.gusseynov@gmail.com'
+
+    - name: Clone repository
+      shell: cd ~/git && git clone https://github.com/Shamil-G/jenkins
+   
+   when: not stat_git.stat.exists
     
   - name: Update local repository
     shell: cd ~/git/jenkins && git pull &&  git config --list
