@@ -16,7 +16,8 @@
   - debug: var=cur_dir.stdout
   
   - name: ===> Shutdown docker-compose
-    shell: docker-compose down
+    shell: pwd 
+#     && docker-compose down
     ignore_errors: yes
     
   - name: ===> Start docker-compose
