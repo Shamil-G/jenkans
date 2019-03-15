@@ -8,7 +8,7 @@
     shell: yum -y install epel-release 
     
   - name: ===> Install pip
-    shell: yum -y install pip
+    shell: yum -y install python-pip
 #     check_mode: yes
     
   - name: ===> Install Docker
