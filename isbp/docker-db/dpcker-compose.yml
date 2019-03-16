@@ -1,0 +1,8 @@
+db:
+  image: postgres:9.5
+  environment: 
+    TZ: "US/Central"
+  volumes:
+    - ./postgess:/postgres-data:ro
+  ports:
+    - "5432:5432"
