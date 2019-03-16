@@ -3,6 +3,8 @@ db:
   environment: 
     TZ: "US/Central"
   volumes:
+# На хосте есть папка ./postgess
+# В докере это папка /postgres-data
     - ./postgess:/postgres-data:ro
   ports:
     - "5432:5432"
