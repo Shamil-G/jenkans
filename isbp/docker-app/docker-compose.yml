@@ -1,0 +1,16 @@
+app:
+  image: openjdk:8-jre-alpine
+  volumes:
+    - ./app/build/libs/app-0.0.1-SNAPSHOT.jar:/app.jar
+  command: java -jar /app.jar --server.port=9001
+  ports:
+    - "9001:9001"
+  environment:
+    DATABASE_URL: jdbs:postgresql:/db:5432/postres
+    DATABASE_USERNAME: postgres
+    DATABASE_PASSWORD:
+    TZ: "US/Central"
+  links:
+    - db
+  depends_on:
+    - db
