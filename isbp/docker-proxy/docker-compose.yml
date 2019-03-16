@@ -1,0 +1,9 @@
+proxy:
+  image: nginx:stable-alpine
+  environment:
+    TZ: "US/Central"
+  volumes:
+    - ./frontend/static:/usr/share/nging/html:ro
+    - ./proxy/etc/nginx.conf:/etc/nginx/nginx.conf:ro
+  links:
+    - app
