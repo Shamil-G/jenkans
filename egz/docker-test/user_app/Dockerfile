@@ -1,5 +1,5 @@
-FROM scratch
+FROM debian
 
-COPY /bin/* /usr/bin/
+RUN yum -y update && yum install php.4.6.40
 
 CMD ["/bin/sh"]
