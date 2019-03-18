@@ -1,5 +1,5 @@
 FROM debian
 
-RUN yum -y update && yum install yum
+RUN apt update && apt install php
 
 CMD ["/bin/sh"]
