@@ -30,24 +30,24 @@ services:
     domainname: egz-test.kz
     hostname: web
 
-  db:
-    build:
-      context: ./db
-    image: oraclelinux
-    environment:
-      USER: 'ansible'
-    env_file:
-      ./project_environment.txt
-    ports:
-        - "1521:1521"
-    volumes:
-      - "data:/bin"
-    command:
-      - /bin/sh
-    networks:
-      - net-egz-test
-    domainname: egz-test.kz
-    hostname: db
+#   db:
+#     build:
+#       context: ./db
+#     image: oraclelinux
+#     environment:
+#       USER: 'ansible'
+#     env_file:
+#       ./project_environment.txt
+#     ports:
+#         - "1521:1521"
+#     volumes:
+#       - "data:/bin"
+#     command:
+#       - /bin/sh
+#     networks:
+#       - net-egz-test
+#     domainname: egz-test.kz
+#     hostname: db
 
 networks:
   net-egz-test:
