@@ -1,2 +1,2 @@
-FROM: docker.io/busybox
+FROM docker.io/busybox
 CMD ["/bin/bash"]
