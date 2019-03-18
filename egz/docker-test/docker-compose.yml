@@ -3,10 +3,10 @@ services:
   web-egz-test:
     build:
       context: ./user_app
-#       dockerfile: Dockerfile
+      dockerfile: Dockerfile
       args:
         buildno: 1.0
-    image: debian
+#     image: debian
     environment:
         USER: 'ansible'
     env_file:
