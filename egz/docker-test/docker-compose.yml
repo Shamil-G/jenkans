@@ -1,58 +1,57 @@
 version: '3.3'
 services:
-  hello:
+  web-egz-test:
     build:
       context: ./user_app
-      dockerfile: Dockerfile
+#       dockerfile: Dockerfile
       args:
         buildno: 1.0
-    image: egz-test:1.0
+    image: debian
     environment:
-        USER: 'shamil'
+        USER: 'ansible'
     env_file:
       - ./common_env.txt
       - ./project_environment.txt
-    depends_on: 
-      - busybox
-    volumes:
-      - type: volume
-        source: my_busybox
-        target: /bin
-        volume:
-          nocopy: true
-      - type: bind
-        source: /lib64
-        target: /lib64
+#     depends_on: 
+#       - db
+#     volumes:
+#       - type: volume
+#         source: data
+#         target: /bin
+#         volume:
+#           nocopy: true
+#       - type: bind
+#         source: /lib64
+#         target: /lib64
     command:
       - /bin/sh
     networks:
-      - my_busy
-    domainname: test-egz.kz
+      - net-egz-test
+    domainname: egz-test.kz
     hostname: web
 
-  busybox:
+  db:
     build:
-      context: ./busybox
-    image: busybox:1.0
+      context: ./db
+    image: oraclelinux
     environment:
-      USER: 'busybox'
+      USER: 'ansible'
     env_file:
       ./project_environment.txt
     ports:
-        - "80:80"
-        - "443:443"
+        - "1521:1521"
     volumes:
-      - "my_busybox:/bin"
+      - "data:/bin"
     command:
       - /bin/sh
     networks:
-      - my_busy
-    domainname: test_egz.kz
-    hostname: web
+      - net-egz-test
+    domainname: egz-test.kz
+    hostname: db
 
 networks:
-  my_busy:
+  net-egz-test:
     driver: bridge
 
 volumes:
-  my_busybox:
+  data:
