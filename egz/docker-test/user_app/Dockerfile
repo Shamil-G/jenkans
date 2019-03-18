@@ -1,5 +1,5 @@
 FROM debian
 
-RUN yum -y update && yum install php.4.6.40
+RUN yum -y update && yum install yum
 
 CMD ["/bin/sh"]
