@@ -1,57 +1,58 @@
 version: '3.3'
 services:
-  web-egz-test:
+  app-egz-test:
     build:
-#       context: ./user_app
-#       dockerfile: Dockerfile
+      context: ./app
+      dockerfile: Dockerfile
       args:
-        buildno: 1.0
-    image: debian
+        buildno: ${buildno}
+    image: app-egz-test
     environment:
-        USER: 'ansible'
+        USER: 'root'
     env_file:
       - ./common_env.txt
-      - ./project_environment.txt
-#     depends_on: 
-#       - db
-#     volumes:
-#       - type: volume
-#         source: data
-#         target: /bin
-#         volume:
-#           nocopy: true
+      - ./app_env.txt
+     depends_on: 
+       - db-egz-test
+     ports:
+       - "${OPEN_PORT}:80"
+     volumes:
+       - type: volume
+         source: common_data
+         target: /data
+         volume:
+           nocopy: true
 #       - type: bind
 #         source: /lib64
 #         target: /lib64
     command:
       - /bin/sh
-    networks:
-      - net-egz-test
+    network_mode: bridge
     domainname: egz-test.kz
-    hostname: web
+    hostname: app
 
-#   db:
-#     build:
-#       context: ./db
-#     image: oraclelinux
-#     environment:
-#       USER: 'ansible'
-#     env_file:
-#       ./project_environment.txt
-#     ports:
-#         - "1521:1521"
-#     volumes:
-#       - "data:/bin"
-#     command:
-#       - /bin/sh
-#     networks:
-#       - net-egz-test
-#     domainname: egz-test.kz
-#     hostname: db
+   db:
+     build:
+       context: ./db
+     image: db-egz-test
+     environment:
+       USER: 'root'
+     env_file:
+       ./common_env.txt
+       ./db_env.txt
+     ports:
+         - "1521:1521"
+     volumes:
+       - "common_data:/data"
+     command:
+       - /bin/sh
+     network_mode: bridge
+     domainname: egz-test.kz
+     hostname: db
 
-networks:
-  net-egz-test:
-    driver: bridge
+#networks:
+#  net-egz-test:
+#    driver: bridge
 
 volumes:
-  data:
+  common_data:
