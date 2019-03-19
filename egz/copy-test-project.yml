@@ -14,7 +14,7 @@
     ignore_errors: yes
     
   - name: ===> Start docker-compose
-    shell: cd {{ dest_dir }} && docker-compose up -d
+    shell: cd {{ dest_dir }} && docker-compose up -d --build
     register: st
     
   - debug: var=st.stdout
