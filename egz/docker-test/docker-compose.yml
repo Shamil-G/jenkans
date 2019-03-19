@@ -8,19 +8,19 @@ services:
         buildno: ${buildno}
     image: app-egz-test
     environment:
-        USER: 'root'
+      USER: 'root'
     env_file:
       - ./common_env.txt
       - ./app_env.txt
-     depends_on: 
-       - db-egz-test
-     ports:
-       - "${OPEN_PORT}:80"
-     volumes:
-       - type: volume
-         source: common_data
-         target: /data
-         volume:
+    depends_on: 
+      - db-egz-test
+    ports:
+      - "${OPEN_PORT}:80"
+    volumes:
+      - type: volume
+        source: common_data
+        target: /data
+        volume:
            nocopy: true
 #       - type: bind
 #         source: /lib64
@@ -31,7 +31,7 @@ services:
     domainname: egz-test.kz
     hostname: app
 
-   db:
+  db:
      build:
        context: ./db
      image: db-egz-test
@@ -41,7 +41,7 @@ services:
        ./common_env.txt
        ./db_env.txt
      ports:
-         - "1521:1521"
+       - "1521:1521"
      volumes:
        - "common_data:/data"
      command:
