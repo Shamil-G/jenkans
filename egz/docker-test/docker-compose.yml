@@ -22,6 +22,11 @@ services:
         target: /data
         volume:
            nocopy: true
+      - type: volume
+        source: php_local
+        target: /usr/local
+        2volume:
+           nocopy: true
 #       - type: bind
 #         source: /lib64
 #         target: /lib64
@@ -31,6 +36,15 @@ services:
     domainname: egz-test.kz
     hostname: app
 
+
+  php-service:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    image: php
+    volumes:
+      - "php_local:/usr/local"
+      
   db-service:
      build:
        context: ./db
@@ -56,3 +70,4 @@ services:
 
 volumes:
   common_data:
+  php_local:
