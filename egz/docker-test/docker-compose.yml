@@ -10,8 +10,8 @@ services:
     environment:
       USER: 'root'
     env_file:
-      - ./common_env.txt
-      - ./app_env.txt
+      - ./common.env
+      - ./app.env
     depends_on: 
       - db-service
     ports:
@@ -52,8 +52,8 @@ services:
      environment:
        USER: 'root'
      env_file:
-       - ./common_env.txt
-       - ./db_env.txt
+       - ./common.env
+       - ./db.env
      ports:
        - "1521:1521"
      volumes:
