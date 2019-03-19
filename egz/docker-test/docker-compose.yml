@@ -25,7 +25,7 @@ services:
       - type: volume
         source: php_local
         target: /usr/local
-        2volume:
+        volume:
            nocopy: true
 #       - type: bind
 #         source: /lib64
