@@ -31,7 +31,7 @@ services:
 #         source: /lib64
 #         target: /lib64
     command:
-      - /bin/sh
+      - /bin/bash
     network_mode: bridge
     domainname: egz-test.kz
     hostname: app
