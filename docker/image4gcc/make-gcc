@@ -1,2 +1,1 @@
-sudo docker build -t my-gcc .
-sudo docker run -rm -it my-gcc
+sudo docker build -f Dockerfile-4gcc -t my-gcc .
