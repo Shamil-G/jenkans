@@ -1,0 +1,5 @@
+echo
+sudo docker container ls
+echo
+echo
+sudo docker image ls
