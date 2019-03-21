@@ -1,0 +1,4 @@
+echo
+sudo docker container prune 
+echo
+sudo docker image prune
