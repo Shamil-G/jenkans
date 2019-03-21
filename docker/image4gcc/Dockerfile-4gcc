@@ -3,6 +3,8 @@ FROM centos
 RUN yum install -y gcc && yum install -y make && yum install -y mc
 
 #Exist 2 way for extends content image
+# packages - local directory
+# for_build - inside image directory
 #ADD packages/* /for_build/
 #VOLUME packages:/for_build
 
