@@ -1,5 +1,5 @@
 FROM centos
 
-RUN yum install -y gcc && yum install -y mc
+RUN yum install -y gcc && yum install -y make && yum install -y mc
 
 CMD ["/bin/bash"]
