@@ -1,0 +1,1 @@
+import ~/jenkans/{{ prj_name }}/prepare_image.yml
