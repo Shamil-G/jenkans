@@ -7,4 +7,5 @@
     - debug: 
         vars: "{{ prj_name }}"
         
-    - include ~/jenkans/{{ prj_name }}/ansible/prepare_image.yml
+    - name: Call playbook
+      shell: ansible-playbook ~/jenkans/{{ prj_name }}/ansible/prepare_image.yml
