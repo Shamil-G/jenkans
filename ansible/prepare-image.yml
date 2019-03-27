@@ -1,1 +1,1 @@
-import ~/jenkans/{{ prj_name }}/prepare_image.yml
+import ~/jenkans/{{ prj_name }}/ansible/prepare_image.yml
