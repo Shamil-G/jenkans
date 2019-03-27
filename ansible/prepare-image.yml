@@ -4,8 +4,8 @@
   gather_facts: no
 
   tasks:
-    - debug: 
-        vars: "{{ prj_name }}"
+#     - debug: 
+#         var: "{{ prj_name }}"
         
     - name: Call playbook
       shell: ansible-playbook ~/jenkans/{{ prj_name }}/ansible/prepare_image.yml
