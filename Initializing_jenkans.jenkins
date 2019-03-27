@@ -1,0 +1,31 @@
+#!groovy
+
+properties([disableConcurrentBuilds()])
+
+pipeline {
+  agent {
+    label 'master'
+  }
+  options {
+    buildDiscarder( logRotator( numToKeepStr: '3', artifactNumToKeepStr: '7') )
+    timestamps()
+  }
+  environment {
+    JENKANS_PATH = 'jenkans'
+  }
+  stages {
+    stage( "Update Git" ){
+        steps{
+            sh "cd ~/$JENKANS_PATH && git pull"
+        }
+    }
+  }
+  post{
+    failure{
+        sh "git config --global user.name 'Shamil-G'"
+        sh "git config --global user.email 's.gusseynov@gmail.com'"
+        sh "git config --list"
+        sh "cd ~/ && git clone https://github.com/Shamil-G/jenkans"
+    }
+  }
+}
