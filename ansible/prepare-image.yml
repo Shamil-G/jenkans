@@ -4,4 +4,7 @@
   gather_facts: no
 
   tasks:
+    - debug: 
+        vars: {{ prj_name }}
+        
     - include ~/jenkans/{{ prj_name }}/ansible/prepare_image.yml
