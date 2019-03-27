@@ -5,6 +5,6 @@
 
   tasks:
     - debug: 
-        vars: {{ prj_name }}
+        vars: "{{ prj_name }}"
         
     - include ~/jenkans/{{ prj_name }}/ansible/prepare_image.yml
