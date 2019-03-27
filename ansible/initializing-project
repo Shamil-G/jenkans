@@ -1,0 +1,23 @@
+---
+- name: -----> Initialization Git for Ansible
+  hosts: localhost
+  
+  tasks: 
+  - name: Check exists Project Dir
+    stat: path=~/projects/{{ prj_name }}
+    register: prj_dir
+  
+  - name: Create Prj_Dir
+    shell: mkdir -p ~/git/{{ prj_name }}
+    when: not prj_dir.stat.exists
+    
+  - name: Check exists Git 
+    stat: path=~/git/jenkans/{{ prj_name }}
+    register: stat_src_prj
+
+  - block:
+    
+    - name: Project is initializing
+      copy: src = ~/git/jenkans/{{ prj_name }} dest= ~/projects/{{ prj_name }} 
+  
+    when: stat_src_prj.stat.exists
