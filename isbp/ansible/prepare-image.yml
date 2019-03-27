@@ -1,6 +1,6 @@
 ---
 - name: Prepare Image for {{ prj_name }}
-  hosts: web-isbp
+  hosts: web-isgp
   
   tasks:
   - name: Prepare Image with Compile
