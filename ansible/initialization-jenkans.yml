@@ -6,11 +6,11 @@
   
   tasks: 
   - name: Check exists GIT dir
-    stat: path=~/git/jenkans
+    stat: path=~/{{ jenkans }}
     register: stat_dir
   
   - name: Create GIT dir
-    shell: mkdir -p ~/git/{{ jenkans }}
+    shell: mkdir -p ~/2{{ jenkans }}
     when: not stat_dir.stat.exists
     
   - name: Check exists Git
