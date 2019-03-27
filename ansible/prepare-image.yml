@@ -8,4 +8,4 @@
 #         var: "{{ prj_name }}"
         
     - name: Call playbook
-      shell: ansible-playbook ~/jenkans/{{ prj_name }}/ansible/prepare_image.yml
+      shell: /usr/bin/ansible-playbook ~/jenkans/{{ prj_name }}/ansible/prepare_image.yml
