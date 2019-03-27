@@ -11,12 +11,12 @@ pipeline {
     timestamps()
   }
   environment {
-    JENKANS_PATH = 'jenkans'
+    JENKANS = 'jenkans'
   }
   stages {
     stage( "Update Git" ){
         steps{
-            sh "cd ~/$JENKANS_PATH && git pull"
+            sh "cd ~/$JENKANS && git pull"
         }
     }
   }
@@ -25,7 +25,7 @@ pipeline {
         sh "git config --global user.name 'Shamil-G'"
         sh "git config --global user.email 's.gusseynov@gmail.com'"
         sh "git config --list"
-        sh "cd ~/ && git clone https://github.com/Shamil-G/jenkans"
+        sh "cd ~/ && git clone https://github.com/Shamil-G/$JENKANS"
     }
   }
 }
