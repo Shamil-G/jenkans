@@ -1,14 +1,14 @@
 ---
-- name: -----> update-git
+- name: -----> Initialization Git for Ansible
   hosts: localhost
   
   tasks: 
   - name: Check exists GIT dir
-    stat: path=~/git/jenkins
+    stat: path=~/git/jenkans
     register: stat_dir
   
   - name: Create GIT dir
-    shell: mkdir -p ~/git
+    shell: mkdir -p ~/git/jenkans
     when: not stat_dir.stat.exists
     
   - name: Check exists Git
@@ -29,6 +29,5 @@
     when: not stat_git.stat.exists
     
   - name: Update local repository
-    shell: cd ~/git/jenkins && git pull &&  git config --list
+    shell: cd ~/git/jenkans && git pull &&  git config --list
     when: stat_git.stat.exists
-    
