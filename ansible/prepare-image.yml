@@ -1,1 +1,7 @@
-import ~/jenkans/{{ prj_name }}/ansible/prepare_image.yml
+
+---
+- hosts: all
+  gather_facts: no
+
+  tasks:
+    - include ~/jenkans/{{ prj_name }}/ansible/prepare_image.yml
