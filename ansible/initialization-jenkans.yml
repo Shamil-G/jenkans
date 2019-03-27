@@ -1,6 +1,8 @@
 ---
 - name: -----> Initialization Git for Ansible
   hosts: localhost
+  vars: 
+    jenkans: jenkans
   
   tasks: 
   - name: Check exists GIT dir
@@ -8,7 +10,7 @@
     register: stat_dir
   
   - name: Create GIT dir
-    shell: mkdir -p ~/git/jenkans
+    shell: mkdir -p ~/git/{{ jenkans }}
     when: not stat_dir.stat.exists
     
   - name: Check exists Git
@@ -24,10 +26,10 @@
       shell: git config --global user.name 'Shamil-G' && git config --global user.email 's.gusseynov@gmail.com'
 
     - name: Clone repository
-      shell: cd ~/git && git clone https://github.com/Shamil-G/jenkins
+      shell: cd ~/git && git clone https://github.com/Shamil-G/{{ jenkans }}.git
    
     when: not stat_git.stat.exists
     
   - name: Update local repository
-    shell: cd ~/git/jenkans && git pull &&  git config --list
+    shell: cd ~/{{ jenkans }} && git pull &&  git config --list
     when: stat_git.stat.exists
