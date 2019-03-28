@@ -1,7 +1,7 @@
 ---
 - name: Make Image for EGZ MF
   hosts: web-egz
-  vars::
+  vars:
     src_dir: /home/jenkins/jenkans/egz-mf/docker/
     dest_dir: /home/ansible/docker-projects/egz-mf/
     
