@@ -1,0 +1,8 @@
+---
+- name: Make all project EGZ MF
+  hosts: web-isgp
+  
+  tasks:
+  - name: Update Registry
+    hosts: localhost
+    shell: echo "-----> Update local registry"
