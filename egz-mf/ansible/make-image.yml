@@ -18,7 +18,7 @@
     copy: src={{ src_dir }} dest={{ dest_dir }}
     
   - name: Make image with GCC, Make, MC
-    shell: cd {{ dest_dir }}/docker && sudo build -f docker4gcc/Dockerfile-4gcc -t centos-gcc 
+    shell: cd {{ dest_dir }}docker && sudo build -f docker4gcc/Dockerfile-4gcc -t centos-gcc 
   
 #   - name: Shutdown docker-compose
 #     shell:  docker-compose down
