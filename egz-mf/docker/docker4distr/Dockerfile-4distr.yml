@@ -1,14 +1,14 @@
 FROM centos-gcc
 
-ADD nginx-1.15.9.tar.gz /usr/srsc/app
+ADD nginx-1.15.9.tar.gz /usr/src/app
 WORKDIR /usr/src/app/nginx-1.15.9
 RUN pwd && ls -al && ./configure && make && make install
 
+ADD oci8-2.0.10.tgz /usr/src/app
 WORKDIR /usr/src/app/oci8-2.0.10
-ADD oci8-2.0.10.tgz /usr/srsc/app
 
-WORKDIR /usr/src/app/php-5.6.40
 ADD php-5.6.40.tar.gz /usr/src/app
+WORKDIR /usr/src/app/php-5.6.40
 RUN ./configure && make && make install
 
 CMD ["/bin/bash"]
