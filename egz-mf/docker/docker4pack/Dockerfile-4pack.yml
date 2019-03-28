@@ -1,5 +1,5 @@
 FROM centos-gcc
 
-RUN yum -y install libxml2
+RUN yum -y install libxml2 && yum -y install pcre
 
 CMD ["/bin/bash"]
