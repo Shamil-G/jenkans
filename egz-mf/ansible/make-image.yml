@@ -1,0 +1,21 @@
+---
+- name: Make Image for EGZ MF
+  hosts: web-egz
+  vars::
+    src_dir: /home/jenkins/jenkans/egz-mf/docker/
+    dest_dir: /home/ansible/docker-projects/egz-mf/
+    
+  tasks:
+  - name: Copy files to remote servers for create Image
+    copy: src={{ src_dir }} dest={{ dest_dir }}
+    
+  - name: Shutdown docker-compose
+    shell: cd {{ dest_dir }} && docker-compose down
+    ignore_errors: yes
+    
+  - name: -----> Start Docker compose
+    shell: cd {{ dest_dir }} && docker-compose up -d --build
+    register: st
+    
+  - debug: var=st.stdout
+  
