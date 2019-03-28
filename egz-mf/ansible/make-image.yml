@@ -11,7 +11,7 @@
     register: res
     
   - name: Create directory for project
-    shell: mkfir -p {{ dest_dir }}
+    shell: mkdir -p {{ dest_dir }}
     when: not res.stat.exists
 
   - name: Copy files to remote servers for create Image
