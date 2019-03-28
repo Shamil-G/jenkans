@@ -10,6 +10,6 @@ WORKDIR /usr/src/app/oci8-2.0.10
 
 ADD php-5.6.40.tar.gz /usr/src/app
 WORKDIR /usr/src/app/php-5.6.40
-RUN ./configure && make && make install
+RUN ./configure && make && make test && make install
 
 CMD ["/bin/bash"]
