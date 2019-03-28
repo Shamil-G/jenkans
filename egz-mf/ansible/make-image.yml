@@ -23,8 +23,8 @@
   - name: Make image with GCC and packages
     shell: cd {{ dest_dir }}docker4pack && sudo docker build -f Dockerfile-4pack.yml --rm -t egz-mf-pack .
 
-  - name: Make image with GCC, Make, MC
-    shell: cd {{ dest_dir }}docker4distr && sudo docker build -f Dockerfile-4distr.yml --rm -t egz-mf-distr .
+  - name: Make Finish Image
+    shell: cd {{ dest_dir }}docker4distr && sudo docker build -f Dockerfile-4distr.yml --rm -t egz-mf-finish .
 
 #   - name: Shutdown docker-compose
 #     shell:  docker-compose down
