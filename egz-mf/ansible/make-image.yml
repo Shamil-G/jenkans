@@ -12,13 +12,13 @@
   - name: Make image with GCC, Make, MC
     shell: cd {{ dest_dir }}/docker && sudo build -f docker4gcc/Dockerfile-4gcc -t centos-gcc 
   
-  - name: Shutdown docker-compose
-    shell:  && docker-compose down
-    ignore_errors: yes
+#   - name: Shutdown docker-compose
+#     shell:  docker-compose down
+#     ignore_errors: yes
     
-  - name: -----> Start Docker compose
-    shell: cd {{ dest_dir }} && docker-compose up -d --build
-    register: st
+#   - name: -----> Start Docker compose
+#     shell: cd {{ dest_dir }} && docker-compose up -d --build
+#     register: st
     
-  - debug: var=st.stdout
+#   - debug: var=st.stdout
   
