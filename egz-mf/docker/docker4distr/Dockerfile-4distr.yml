@@ -1,7 +1,7 @@
 FROM centos-gcc
 
 WORKDIR /usr/src/app/nginx-1.15.9
-ADD ngnx-1.15.9.tar.gz /usr/srsc/app
+ADD nginx-1.15.9.tar.gz /usr/srsc/app
 RUN ./configure && make && make install
 
 WORKDIR /usr/src/app/oci8-2.0.10
