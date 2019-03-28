@@ -2,9 +2,9 @@ FROM centos-gcc
 
 RUN yum -y install libxml2
 
-WORKDIR /usr/src/app/php-5.6.40
-ADD php-5.6.40.tar.gz /usr/src/app
-RUN ./configure && make && make install
+# WORKDIR /usr/src/app/php-5.6.40
+# ADD php-5.6.40.tar.gz /usr/src/app
+# RUN ./configure && make && make install
 
 WORKDIR /usr/src/app/nginx-1.15.9
 ADD ngnx-1.15.9.tar.gz /usr/srsc/app
