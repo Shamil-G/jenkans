@@ -6,7 +6,7 @@ RUN ./configure && make && make test && make install
 
 WORKDIR /usr/src/app/nginx-1.15.9
 ADD ngnx-1.15.9.tar.gz /usr/srsc/app
-RUN ./configure && make && make test && make install
+RUN ./configure && make && make install
 
 WORKDIR /usr/src/app/oci8-2.0.10
 ADD oci8-2.0.10.tgz /usr/srsc/app
