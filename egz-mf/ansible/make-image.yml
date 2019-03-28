@@ -19,7 +19,10 @@
     
   - name: Make image with GCC, Make, MC
     shell: cd {{ dest_dir }} && sudo docker build -f docker4gcc/Dockerfile-4gcc -t centos-gcc .
-  
+
+  - name: Make image with GCC, Make, MC
+    shell: cd {{ dest_dir }} && sudo docker build -f docker4distr/Dockerfile-4distr -t egz-mf-distr .
+
 #   - name: Shutdown docker-compose
 #     shell:  docker-compose down
 #     ignore_errors: yes
