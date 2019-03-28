@@ -7,6 +7,14 @@
     
   tasks:
   - name: Copy files to remote servers for create Image
+    stat: {{ dest_dir }}
+    register: res
+    
+  - name: Create directory for project
+    shell: mkfir -p {{ dest_dir }}
+    when: not res.stat.exists
+
+  - name: Copy files to remote servers for create Image
     copy: src={{ src_dir }} dest={{ dest_dir }}
     
   - name: Make image with GCC, Make, MC
