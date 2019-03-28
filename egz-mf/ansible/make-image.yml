@@ -7,7 +7,7 @@
     
   tasks:
   - name: Check exists project directory
-    stat: {{ dest_dir }}
+    stat: path={{ dest_dir }}
     register: res
     
   - name: Create directory for project
