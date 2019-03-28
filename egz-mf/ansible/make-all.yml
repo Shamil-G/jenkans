@@ -1,4 +1,7 @@
 ---
+- import_playbook: /home/jenkins/jenkans/ansible/initialization_jenkans.yml
+- import_playbook: /home/jenkins/jenkans/egz-mf/ansible/make-image.yml
+
 - name: Make all project EGZ MF
   hosts: web-isgp
   
