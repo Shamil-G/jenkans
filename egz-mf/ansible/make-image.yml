@@ -18,10 +18,13 @@
     copy: src={{ src_dir }} dest={{ dest_dir }}
     
   - name: Make image with GCC, Make, MC
-    shell: cd {{ dest_dir }}/docker4gcc && sudo docker build -f Dockerfile-4gcc -t centos-gcc .
+    shell: cd {{ dest_dir }}docker4gcc && sudo docker build -f Dockerfile-4gcc -t centos-gcc .
+
+  - name: Make image with GCC and packages
+    shell: cd {{ dest_dir }}docker4pack && sudo docker build -f Dockerfile-4pack -t egz-mf-pack .
 
   - name: Make image with GCC, Make, MC
-    shell: cd {{ dest_dir }}/docker4distr && sudo docker build -f Dockerfile-4distr -t egz-mf-distr .
+    shell: cd {{ dest_dir }}docker4distr && sudo docker build -f Dockerfile-4distr -t egz-mf-distr .
 
 #   - name: Shutdown docker-compose
 #     shell:  docker-compose down
