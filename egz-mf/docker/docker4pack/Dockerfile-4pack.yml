@@ -1,0 +1,5 @@
+FROM centos-gcc
+
+RUN yum -y install libxml2
+
+CMD ["/bin/bash"]
