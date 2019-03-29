@@ -1,13 +1,22 @@
 - name: Run Images EGZ-MF
   hosts: web-egz
+  become: yes
   vars:
     dest_dir: /home/ansible/docker-projects/egz-mf/docker4run/
+    app_host_dir: /home/ansible/docker-projects/egz-mf/app
+    app_docker_dir: /usr/local/nginx/html
     
   tasks:
-  - name: Shutdown docker-compose
-    shell:  cd {{ dest_dir }} && docker-compose down && docker container prune && docker image prune
-    ignore_errors: yes
+  - name: Build Docker image
+    shell: cd {{ dest_dir }} && docker build -f Dockerfile.yml -t egz-mf
     
-  - name: -----> Start Docker compose
-    shell: cd {{ dest_dir }} && docker-compose up --build && docker-compose run -d egz-mf
-    register: st
+  - name: Start Docker container
+    shell: docker run --rm -d -v {{ app_host_dir }}:{{ app_docker_dir }}:ro egz-mf
+  
+#   - name: Shutdown docker-compose
+#     shell:  cd {{ dest_dir }} && docker-compose down && docker container prune && docker image prune
+#     ignore_errors: yes
+    
+#   - name: -----> Start Docker compose
+#     shell: cd {{ dest_dir }} && docker-compose up --build && docker-compose run -d egz-mf
+#     register: st
