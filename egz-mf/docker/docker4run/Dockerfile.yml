@@ -1,5 +1,6 @@
 FROM egz-mf-finish
 
 COPY nginx.conf /usr/local/nginx/conf/nginx.conf
+RUN /usr/local/nginx/sbin/nginx
 
 CMD ["/bin/bash"]
