@@ -25,14 +25,3 @@
 
   - name: Make Finish Image
     shell: cd {{ dest_dir }}docker4distr && sudo docker build -f Dockerfile-4distr.yml --rm -t egz-mf-finish .
-
-#   - name: Shutdown docker-compose
-#     shell:  docker-compose down
-#     ignore_errors: yes
-    
-#   - name: -----> Start Docker compose
-#     shell: cd {{ dest_dir }} && docker-compose up -d --build
-#     register: st
-    
-#   - debug: var=st.stdout
-  
