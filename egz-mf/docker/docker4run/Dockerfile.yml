@@ -3,4 +3,4 @@ FROM egz-mf-finish
 COPY nginx.conf /usr/local/nginx/conf/nginx.conf
 WORKDIR /usr/local/nginx/
 
-CMD ["/bin/bash","/usr/local/nginx/sbin/nginx"]
+CMD ["/bin/bash"]
