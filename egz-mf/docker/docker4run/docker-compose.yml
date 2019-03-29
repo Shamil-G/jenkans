@@ -14,7 +14,7 @@ services:
     volumes:
       - type: bind
         source: /home/ansible/docker-projects/egz-mf/app
-        target: /usr/share/nginx/html
+        target: /usr/local/nginx/html
       - type: bind
         source: /home/ansible/docker-projects/egz-mf/docker4run/nginx.conf
         target: /etc/nginx/nginx.conf
