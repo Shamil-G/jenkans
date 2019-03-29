@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  egz-mf-run:
+    build:
+      context: ./app
+      args:
+        buildno: 1
+    image: egz-mf-finish
+    env_file:
+      - ./common.env
+      - ./app.env
+    ports:
+      - "8080:80"
+    volumes:
+      - type: bind
+        source: /home/ansible/docker-projects/egz-mf/app
+        target: /usr/share/nginx/html
+      - type: bind
+        source: /home/ansible/docker-projects/egz-mf/nginx.conf
+        target: /etc/nginx/nginx.conf
+    network: bridge
+    domainname: egz-mf-test.kz
+    hostname: app
+    
