@@ -1,0 +1,2 @@
+FROM egz-mf-finish
+CMD ["/bin/bash"]
