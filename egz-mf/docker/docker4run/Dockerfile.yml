@@ -4,6 +4,6 @@ COPY nginx.conf /usr/local/nginx/conf/nginx.conf
 WORKDIR /usr/local/nginx/
 RUN /usr/local/nginx/sbin/nginx
 
-EXPOSE 8080
+EXPOSE 8080:8080
 
 CMD ["/bin/bash"]
