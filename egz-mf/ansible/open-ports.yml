@@ -1,0 +1,9 @@
+- name: Open firewall ports
+  hosts: web-egz
+  
+  tasks:
+  - name: Add open ports to firewall
+    shell: firewall-cmd --permanent --add-port=8080-8081/tcp
+
+  - name: Reload firewall
+    shell: firewall-cmd --reload
