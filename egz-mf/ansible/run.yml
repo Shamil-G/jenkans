@@ -5,13 +5,14 @@
     dest_dir: /home/ansible/docker-projects/egz-mf/docker4run/
     app_host_dir: /home/ansible/docker-projects/egz-mf/app
     app_docker_dir: /usr/local/nginx/html
+    nginx_dir: /usr/local/nginx/sbin
     
   tasks:
   - name: Build Docker image
     shell: cd {{ dest_dir }} && docker build -f Dockerfile.yml -t egz-mf .
     
   - name: Start Docker container
-    shell: docker run --rm -d -v {{ app_host_dir }}:{{ app_docker_dir }}:ro egz-mf
+    shell: docker run --rm -d -p 8080:8080 -v {{ app_host_dir }}:{{ app_docker_dir }}:ro egz-mf {{ nginx_dir }} -g 'daemin off;'
   
 #   - name: Shutdown docker-compose
 #     shell:  cd {{ dest_dir }} && docker-compose down && docker container prune && docker image prune
