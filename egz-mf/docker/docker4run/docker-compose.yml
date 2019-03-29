@@ -3,6 +3,7 @@ services:
   egz-mf-run:
     build:
       context: ./
+      dockerfile: Dockerfile.yml
       args:
         buildno: 1
 #     image: egz-mf-finish
