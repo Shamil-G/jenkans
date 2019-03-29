@@ -32,6 +32,7 @@
     git:
       repo: 'https://github.com/Shamil-G/{{ jenkans }}.git'
       dest: ~/
+      update: yes
 #       version: release-0.22
 #   shell: cd ~/ && pwd && git clone https://github.com/Shamil-G/{{ jenkans }}.git
 #     when: not stat_dir.stat.exists   
