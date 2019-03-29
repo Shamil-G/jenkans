@@ -1,0 +1,15 @@
+- name: Run Images EGZ-MF
+  hosts: web-egz
+  vars:
+    dest_dir: /home/ansible/docker-projects/egz-mf/docker4run/
+    
+  tasks:
+  - name: Shutdown docker-compose
+    shell:  cd {{ dest_dir }} && docker-compose down && docker-compose container prune
+    ignore_errors: yes
+    
+  - name: -----> Start Docker compose
+    shell: cd {{ dest_dir }} && docker-compose up -d --build
+    register: st
+    
+  - debug: var=st.stdout
