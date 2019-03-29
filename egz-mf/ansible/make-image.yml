@@ -6,14 +6,11 @@
     dest_dir: /home/ansible/docker-projects/egz-mf/
     
   tasks:
-  - name: Check exists project directory
-    stat: path={{ dest_dir }}
-    register: res
+  - name: Check exist (create) project directory
+    file: path={{ dest_dir }}
+    state: directory
+    mode: 0755
     
-  - name: Create directory for project
-    shell: mkdir -p {{ dest_dir }}
-    when: not res.stat.exists
-
   - name: Copy files to remote servers for create Image
     copy: src={{ src_dir }} dest={{ dest_dir }}
     
