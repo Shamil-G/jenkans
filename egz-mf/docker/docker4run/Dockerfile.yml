@@ -1,5 +1,5 @@
 FROM egz-mf-finish
 
-COPY: /home/ansible/docker-projects/egz-mf/docker4run/nginx.conf /usr/local/nginx/conf/nginx.conf
+COPY nginx.conf /usr/local/nginx/conf/nginx.conf
 
 CMD ["/bin/bash"]
