@@ -11,5 +11,3 @@
   - name: -----> Start Docker compose
     shell: cd {{ dest_dir }} && docker-compose up --build && docker-compose run -d egz-mf
     register: st
-    
-  - debug: var=st.stdout
