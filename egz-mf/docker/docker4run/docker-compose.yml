@@ -2,7 +2,7 @@ version: '3.7'
 services:
   egz-mf-run:
     build:
-      context: ./app
+      context: ../app
       args:
         buildno: 1
     image: egz-mf-finish
