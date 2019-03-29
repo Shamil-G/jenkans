@@ -18,7 +18,7 @@ services:
       - type: bind
         source: /home/ansible/docker-projects/egz-mf/nginx.conf
         target: /etc/nginx/nginx.conf
-    network: bridge
+    network_mode: bridge
     domainname: egz-mf-test.kz
     hostname: app
     
