@@ -29,7 +29,7 @@
 when: not stat_git.stat.exists
 
   - name: Cloning repository
-    git:
+    - git:
       repo: 'https://github.com/Shamil-G/{{ jenkans }}.git'
       dest: ~/
 #       version: release-0.22
