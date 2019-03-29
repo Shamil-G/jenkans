@@ -5,7 +5,7 @@ services:
       context: ./
       args:
         buildno: 1
-    image: egz-mf-finish
+#     image: egz-mf-finish
     env_file:
       - ./common.env
       - ./app.env
@@ -16,7 +16,7 @@ services:
         source: /home/ansible/docker-projects/egz-mf/app
         target: /usr/share/nginx/html
       - type: bind
-        source: /home/ansible/docker-projects/egz-mf/nginx.conf
+        source: /home/ansible/docker-projects/egz-mf/docker4run/nginx.conf
         target: /etc/nginx/nginx.conf
     network_mode: bridge
     domainname: egz-mf-test.kz
