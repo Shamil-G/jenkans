@@ -1,5 +1,6 @@
 - name: Open firewall ports
   hosts: web-egz
+  become: yes
   
   tasks:
   - name: Add open ports to firewall
