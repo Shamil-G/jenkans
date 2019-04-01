@@ -3,7 +3,7 @@
   hosts: web-egz
   become: yes
   vars:
-    project_name: {{ lookup('env','PROJECT_NAME') }}
+    project_name: "{{ lookup('env','PROJECT_NAME') }}"
     dest_dir: /home/ansible/docker-projects/egz-mf/docker4run/
     app_host_dir: /home/ansible/docker-projects/egz-mf/app
     app_docker_dir: /usr/local/nginx/html
