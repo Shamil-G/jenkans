@@ -20,7 +20,7 @@
   - name: Build Docker image
     shell: cd {{ dest_dir }} && docker build -f Dockerfile.yml -t {{ project_name }} .
   
-  - name: Start Docker containerfor Project: {{ project_name }}
+  - name: Start Docker container for Project "{{ project_name }}"
     shell: docker run --rm -d -p 8080:8080 -v {{ app_host_dir }}:{{ app_docker_dir }}:ro {{ project_name }} /bin/bash
     
 #   - name: Start NGINX сервер
