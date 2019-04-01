@@ -2,7 +2,7 @@
   hosts: web-egz
   vars:
     home_dir: /home/ansible/docker_projects
-    project_name: egz-mf
+    project_name: "{{ lookup('env','PROJECT_NAME') }}"
 #     dest_dir: {{ home_dir }}/{{ project_name }}/docker4run/
 #     app_host_dir: {{ home_dir }}/{{ project_name }}/app
     app_docker_dir: /usr/local/nginx/html
