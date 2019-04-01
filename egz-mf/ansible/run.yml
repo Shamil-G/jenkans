@@ -25,11 +25,3 @@
     
   - name: Start NGINX сервер
     shell: docker exec -dt `docker ps | grep {{ project_name }} | cut -d' ' -f1` sbin/nginx 
-  
-#   - name: Shutdown docker-compose
-#     shell:  cd {{ dest_dir }} && docker-compose down && docker container prune && docker image prune
-#     ignore_errors: yes
-    
-#   - name: -----> Start Docker compose
-#     shell: cd {{ dest_dir }} && docker-compose up --build && docker-compose run -d egz-mf
-#     register: st
