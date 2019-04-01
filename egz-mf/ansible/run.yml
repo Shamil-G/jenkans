@@ -3,14 +3,19 @@
   hosts: web-egz
   become: yes
   vars:
+    project_name: {{ lookup('env','PROJECT_NAME') }}
     dest_dir: /home/ansible/docker-projects/egz-mf/docker4run/
     app_host_dir: /home/ansible/docker-projects/egz-mf/app
     app_docker_dir: /usr/local/nginx/html
     nginx_dir: /usr/local/nginx/sbin
-    
+  
+  {{ lookup('env','PROJECT_NAME') }}
+  
   tasks:
+  
+  
   - name: Debug Pproject name
-    debug: vars={{ PROJECT_NAME }}
+    debug: vars={{ lookup('env','PROJECT_NAME') }}
     
   - name: Stop Docker container
     shell: docker stop `docker ps | grep $PROJECT_NAME | cut -d' ' -f1`
