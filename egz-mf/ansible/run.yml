@@ -10,10 +10,7 @@
     nginx_dir: /usr/local/nginx/sbin
   
   tasks:
-  - name: -----> Debug Pproject name
-    debug: var=dest_dir
-    
-  - name: Stop Docker container
+  - name: Stop Docker container {{ project_name }}
     shell: docker stop `docker ps | grep {{ project_name }} | cut -d' ' -f1`
     ignore_errors: true
     
