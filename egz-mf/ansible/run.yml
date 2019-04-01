@@ -4,14 +4,14 @@
   become: yes
   vars:
     project_name: "{{ lookup('env','PROJECT_NAME') }}"
-    dest_dir: /home/ansible/docker-projects/egz-mf/docker4run/
-    app_host_dir: /home/ansible/docker-projects/egz-mf/app
+    dest_dir: /home/ansible/docker-projects/{{ project_name }}/docker4run/
+    app_host_dir: /home/ansible/docker-projects/{{ project_name }}/app
     app_docker_dir: /usr/local/nginx/html
     nginx_dir: /usr/local/nginx/sbin
   
   tasks:
   - name: -----> Debug Pproject name
-    debug: var=project_name
+    debug: var=dest_dir
     
   - name: Stop Docker container
     shell: docker stop `docker ps | grep {{ project_name }} | cut -d' ' -f1`
