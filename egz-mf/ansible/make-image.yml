@@ -2,8 +2,9 @@
 - name: Make Image for EGZ MF
   hosts: web-egz
   vars:
-    src_dir: /home/jenkins/jenkans/egz-mf/docker/
-    dest_dir: /home/ansible/docker-projects/egz-mf/
+    project_name: $PROJECT_NAME 
+    src_dir: /home/jenkins/jenkans/{{ project_name }}/docker/
+    dest_dir: /home/ansible/docker-projects/{{ project_name }}/
     
   tasks:
   - name: Check exist (create) project directory
@@ -18,7 +19,7 @@
     shell: cd {{ dest_dir }}docker4gcc && sudo docker build -f Dockerfile-4gcc.yml --rm -t centos-gcc .
 
   - name: Make image with GCC and packages
-    shell: cd {{ dest_dir }}docker4pack && sudo docker build -f Dockerfile-4pack.yml --rm -t egz-mf-pack .
+    shell: cd {{ dest_dir }}docker4pack && sudo docker build -f Dockerfile-4pack.yml --rm -t {{ project_name }}-pack .
 
   - name: Make Finish Image
-    shell: cd {{ dest_dir }}docker4distr && sudo docker build -f Dockerfile-4distr.yml --rm -t egz-mf-finish .
+    shell: cd {{ dest_dir }}docker4distr && sudo docker build -f Dockerfile-4distr.yml --rm -t {{ project_name }}-finish .
