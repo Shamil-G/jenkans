@@ -2,7 +2,7 @@
 - name: Make Image for EGZ MF
   hosts: web-egz
   vars:
-    project_name: $PROJECT_NAME 
+    project_name: "{{ lookup('env','PROJECT_NAME') }}" 
     src_dir: /home/jenkins/jenkans/{{ project_name }}/docker/
     dest_dir: /home/ansible/docker-projects/{{ project_name }}/
     
