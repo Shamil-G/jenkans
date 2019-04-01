@@ -9,13 +9,9 @@
     app_docker_dir: /usr/local/nginx/html
     nginx_dir: /usr/local/nginx/sbin
   
-  {{ lookup('env','PROJECT_NAME') }}
-  
   tasks:
-  
-  
   - name: Debug Pproject name
-    debug: vars={{ lookup('env','PROJECT_NAME') }}
+    debug: vars={{ project_name }}
     
   - name: Stop Docker container
     shell: docker stop `docker ps | grep $PROJECT_NAME | cut -d' ' -f1`
