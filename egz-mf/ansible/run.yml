@@ -10,8 +10,8 @@
     nginx_dir: /usr/local/nginx/sbin
   
   tasks:
-  - name: Debug Pproject name
-    debug: vars={{ project_name }}
+  - name: -----> Debug Pproject name
+    debug: var=project_name
     
   - name: Stop Docker container
     shell: docker stop `docker ps | grep $PROJECT_NAME | cut -d' ' -f1`
