@@ -1,3 +1,5 @@
+- name: Declare variable
+  hosts: web-egz
   vars:
     home_dir: /home/ansible/docker_projects
     project_name: egz-mf
