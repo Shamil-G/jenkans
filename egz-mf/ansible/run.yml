@@ -10,7 +10,7 @@
     
   tasks:
   - name: Stop Docker container
-    shell: docker stop `docker ps | grep $PROJECT_NAME | cut -d' ' -f1`
+    shell: docker stop `docker ps | grep {{ PROJECT_NAME }} | cut -d' ' -f1`
     
   - name: Build Docker image
     shell: cd {{ dest_dir }} && docker build -f Dockerfile.yml -t egz-mf .
