@@ -10,7 +10,7 @@
     register: stat_dir
   
   - name: Create GIT dir
-    shell: mkdir -p ~/2{{ jenkans }}
+    shell: mkdir -p ~/{{ jenkans }}
     when: not stat_dir.stat.exists
     
   - name: Check exists Git
