@@ -18,10 +18,10 @@
     ignore_errors: true
     
   - name: Build Docker image
-    shell: cd {{ dest_dir }} && docker build -f Dockerfile.yml -t egz-mf .
+    shell: cd {{ dest_dir }} && docker build -f Dockerfile.yml -t {{ project_name }} .
   
   - name: Start Docker container
-    shell: docker run --rm -d -p 8080:8080 -v {{ app_host_dir }}:{{ app_docker_dir }}:ro egz-mf /bin/bash
+    shell: docker run --rm -d -p 8080:8080 -v {{ app_host_dir }}:{{ app_docker_dir }}:ro {{ project_name }} /bin/bash
     
   - name: Start NGINX сервер
     shell: docker exec -it `docker ps | grep {{ project_name }} | cut -d' ' -f1` sbin/nginx 
