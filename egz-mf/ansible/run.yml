@@ -1,4 +1,3 @@
-- import_playbook: /home/jenkins/jenkans/egz-mf/ansible/project_vars.yml
 - name: Run Images EGZ-MF
   hosts: web-egz
   become: yes
