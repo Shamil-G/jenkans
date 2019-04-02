@@ -1,0 +1,20 @@
+- name: Run Service 
+  hosts: web-isbp
+  vars:
+    project_name: "{{ lookup('env','PROJECT_NAME') }}"
+    project_port: "{{ lookup('env','PROJECT_PORT') }}"
+    homedest_dir: /home/ansible/docker-projects/{{ project_name }}/docker4run/
+    app_host_dir: /home/ansible/docker-projects/{{ project_name }}/app
+    app_docker_dir: /usr/local/nginx/html
+    nginx_dir: /usr/local/nginx/sbin
+
+  tasks:
+  - name: Starting docker-compose
+    shell: cd {{ home_dir }} && docker-compose up -d
+    
+  - name: Stopping service {{ project_name }}
+    shell: cd {{ home_dir }} && docker-compose stop {{ project_name }}
+    
+  - name: Starting service {{ projetc_name }}
+    shell: cd {{ home_dir }} && docker-compose start {{ project_name }}
+    
