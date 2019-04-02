@@ -1,6 +1,6 @@
 ---
 - name: Make Image for EGZ MF
-  hosts: web-isgp
+  hosts: web-isbp
   become: yes
   vars:
     project_name: "{{ lookup('env','PROJECT_NAME') }}" 
