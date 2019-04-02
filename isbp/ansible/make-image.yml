@@ -1,6 +1,7 @@
 ---
 - name: Make Image for EGZ MF
   hosts: web-isgp
+  become: yes
   vars:
     project_name: "{{ lookup('env','PROJECT_NAME') }}" 
     src_dir: /home/jenkins/jenkans/{{ project_name }}/docker/
