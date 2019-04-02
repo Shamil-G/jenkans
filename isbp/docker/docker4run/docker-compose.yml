@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.yml
       args:
         buildno: 1
-#     image: egz-mf-finish
+    command: ./start.bat
     tty: true
     env_file:
       - ./common.env
