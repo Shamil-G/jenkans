@@ -1,0 +1,15 @@
+- name: Run Service 
+  hosts: web-egz
+  
+  tasks:
+  - name: Starting docker-compose
+    shell: cd {{ home_dir }} && docker-compose up -d
+    
+  - name: Stopping service {{ project_name }}
+    shell: cd {{ home_dir }} && docker-compose stop {{ project_name }}
+    
+  - name: Starting service {{ projetc_name }}
+    shell: cd {{ home_dir }} && docker-compose start {{ project_name }}
+    
+  - name: Staring NGINX in service {{ project_name }}
+    shell: cd {{ home_dir }} && dokcer-compose run {{ project_name }} sbin/nginx
