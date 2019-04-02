@@ -16,10 +16,10 @@
     copy: src={{ src_dir }} dest={{ dest_dir }}
     
   - name: Make image with GCC, Make, MC
-    shell: cd {{ dest_dir }}docker4gcc && sudo docker build -f Dockerfile-4gcc.yml --rm -t centos-gcc .
+    shell: cd {{ dest_dir }}docker4wf && sudo docker build -f Dockerfile-4wf.yml --rm -t centos-wf .
 
-  - name: Make image with GCC and packages {{ project_name }}-pack
-    shell: cd {{ dest_dir }}docker4pack && sudo docker build -f Dockerfile-4pack.yml --rm -t {{ project_name }}-pack .
+#   - name: Make image with GCC and packages {{ project_name }}-pack
+#     shell: cd {{ dest_dir }}docker4pack && sudo docker build -f Dockerfile-4pack.yml --rm -t {{ project_name }}-pack .
 
-  - name: Make Finish Image {{ project_name }}-finish
-    shell: cd {{ dest_dir }}docker4distr && sudo docker build -f Dockerfile-4distr.yml --rm -t {{ project_name }}-finish .
+#   - name: Make Finish Image {{ project_name }}-finish
+#     shell: cd {{ dest_dir }}docker4distr && sudo docker build -f Dockerfile-4distr.yml --rm -t {{ project_name }}-finish .
