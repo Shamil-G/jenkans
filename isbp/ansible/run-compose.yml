@@ -10,7 +10,8 @@
 
   tasks:
   - name: Starting docker-compose
-    shell: cd {{ home_dir }} && docker-compose up -d
+    shell: cd {{ home_dir }} && docker-compose up -d --build
+#     shell: cd {{ home_dir }} && docker-compose up -d
     
   - name: Stopping service {{ project_name }}
     shell: cd {{ home_dir }} && docker-compose stop {{ project_name }}
