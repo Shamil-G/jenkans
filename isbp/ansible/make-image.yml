@@ -20,11 +20,11 @@
   - name: Copy WildFly files to remote servers for add to Image
     copy: src={{ src_wf }} dest={{ dest_dir }}/docker4wf
 
-  - name: Make image with GCC, Make, MC
+  - name: Make image with Wildfly
     shell: cd {{ dest_dir }}docker4wf && sudo docker build -f Dockerfile-4wf.yml --rm -t centos-wf .
 
-#   - name: Make image with GCC and packages {{ project_name }}-pack
-#     shell: cd {{ dest_dir }}docker4pack && sudo docker build -f Dockerfile-4pack.yml --rm -t {{ project_name }}-pack .
+   - name: Make image with ZIP UNZIP MC {{ project_name }}-pack
+     shell: cd {{ dest_dir }}docker4pack && sudo docker build -f Dockerfile-4pack.yml --rm -t {{ project_name }}-pack .
 
 #   - name: Make Finish Image {{ project_name }}-finish
 #     shell: cd {{ dest_dir }}docker4distr && sudo docker build -f Dockerfile-4distr.yml --rm -t {{ project_name }}-finish .
