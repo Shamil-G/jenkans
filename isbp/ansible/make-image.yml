@@ -10,7 +10,8 @@
  
   tasks:
   - name: Check exist (create) project directory {{ dest_dir }}
-    file: path={{ dest_dir }}
+    file: 
+      path: {{ dest_dir }}
       state: directory
       mode: 0755
     
