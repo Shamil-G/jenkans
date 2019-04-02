@@ -1,0 +1,6 @@
+FROM centos-wf
+
+#COPY nginx.conf /usr/local/nginx/conf/nginx.conf
+WORKDIR /usr/local/wildfly/
+
+CMD ["/bin/bash"]
