@@ -1,4 +1,4 @@
-FROM centos-wf
+FROM isbp-pack
 
 #COPY nginx.conf /usr/local/nginx/conf/nginx.conf
 WORKDIR /usr/local
