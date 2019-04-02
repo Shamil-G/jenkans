@@ -18,7 +18,7 @@
     copy: src={{ src_dir }} dest={{ dest_dir }}
 
   - name: Copy WildFly files to remote servers for add to Image
-    copy: src={{ src_wf }} dest={{ dest_dir }}/app/
+    copy: src={{ src_wf }} dest={{ dest_dir }}/docker4wf
 
   - name: Make image with GCC, Make, MC
     shell: cd {{ dest_dir }}docker4wf && sudo docker build -f Dockerfile-4wf.yml --rm -t centos-wf .
