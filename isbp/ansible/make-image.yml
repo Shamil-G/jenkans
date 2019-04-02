@@ -1,0 +1,25 @@
+---
+- name: Make Image for EGZ MF
+  hosts: web-isgp
+  vars:
+    project_name: "{{ lookup('env','PROJECT_NAME') }}" 
+    src_dir: /home/jenkins/jenkans/{{ project_name }}/docker/
+    dest_dir: /home/ansible/docker-projects/{{ project_name }}/
+    
+  tasks:
+  - name: Check exist (create) project directory {{ dest_dir }}
+    file: path={{ dest_dir }}
+    state: directory
+    mode: 0755
+    
+  - name: Copy files to remote servers for create Image
+    copy: src={{ src_dir }} dest={{ dest_dir }}
+    
+  - name: Make image with GCC, Make, MC
+    shell: cd {{ dest_dir }}docker4gcc && sudo docker build -f Dockerfile-4gcc.yml --rm -t centos-gcc .
+
+  - name: Make image with GCC and packages {{ project_name }}-pack
+    shell: cd {{ dest_dir }}docker4pack && sudo docker build -f Dockerfile-4pack.yml --rm -t {{ project_name }}-pack .
+
+  - name: Make Finish Image {{ project_name }}-finish
+    shell: cd {{ dest_dir }}docker4distr && sudo docker build -f Dockerfile-4distr.yml --rm -t {{ project_name }}-finish .
