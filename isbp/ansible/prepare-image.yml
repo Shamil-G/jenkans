@@ -1,7 +1,0 @@
----
-- name: Prepare Image for {{ prj_name }}
-  hosts: web-isgp
-  
-  tasks:
-  - name: Prepare Image with Compile
-    shell: echo "-----> Making Image"
