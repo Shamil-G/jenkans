@@ -9,8 +9,8 @@
   tasks:
   - name: Check exist (create) project directory {{ dest_dir }}
     file: path={{ dest_dir }}
-    state: directory
-    mode: 0755
+      state: directory
+      mode: 0755
     
   - name: Copy files to remote servers for create Image
     copy: src={{ src_dir }} dest={{ dest_dir }}
