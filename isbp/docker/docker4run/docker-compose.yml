@@ -1,2 +1,22 @@
-1
-
+version: '3.7'
+services:
+  isbp:
+    build:
+      context: ./
+      dockerfile: Dockerfile.yml
+      args:
+        buildno: 1
+#     image: egz-mf-finish
+    tty: true
+    env_file:
+      - ./common.env
+      - ./app.env
+    ports:
+      - "8082:8080"
+#     volumes:
+#       - type: bind
+#         source: /home/ansible/docker-projects/egz-mf/app
+#         target: /usr/local/nginx/html
+    network_mode: bridge
+    domainname: isbp-test.kz
+    hostname: app
