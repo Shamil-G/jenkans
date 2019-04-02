@@ -11,7 +11,7 @@
   tasks:
   - name: Check exist (create) project directory {{ dest_dir }}
   - file: 
-      path: {{ dest_dir }}
+      path: "{{ dest_dir }}"
       state: directory
 
   - name: Copy JENKANS files to remote servers for create Image
