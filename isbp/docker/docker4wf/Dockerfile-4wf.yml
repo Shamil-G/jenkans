@@ -1,4 +1,7 @@
 FROM centos
-ADD wf.zip /usr/local/wildfly
+
+RUN yum -y install zip unzip mc
+ADD wf.zip /usr/local/wildfly/wf.zip
+RUN unzip /usr/local/wildfly/wf.zip
 #RUN yum install -y gcc make mc
 CMD ["/bin/bash"]
