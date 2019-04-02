@@ -1,1 +1,4 @@
-
+--- 
+- import_playbook: /home/jenkins/jenkans/egz-mf/ansible/make-image.yml
+- import_playbook: /home/jenkins/jenkans/egz-mf/ansible/open-ports.yml
+- import_playbook: /home/jenkins/jenkans/egz-mf/ansible/run.yml
