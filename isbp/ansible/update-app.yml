@@ -1,3 +1,44 @@
+---
+- name: -----> Initialization Git for Ansible
+  hosts: web-isbp
+  vars: 
+    jenkans: jenkans
+   
 
+
+  tasks: 
+  - name: Check exists GIT dir
+    stat: path=~/{{ jenkans }}
+    register: stat_dir
+  
+  - name: Create GIT dir
+    shell: mkdir -p ~/{{ jenkans }}
+    when: not stat_dir.stat.exists
+    
+  - name: Check exists Git
+    stat: path=/usr/bin/git
+    register: stat_git
+
+  - block:
+    
+    - name: Install GIT
+      shell: sudo yum install git
+   
+    - name: Configure Repository
+      shell: git config --global user.name 'Shamil-G' && git config --global user.email 's.gusseynov@gmail.com'
+
+    when: not stat_git.stat.exists
+
+  - name: Cloning repository
+    git:
+      repo: 'https://github.com/Shamil-G/{{ jenkans }}.git'
+      dest: ~/jenkans
+#       force: yes
+#       version: release-0.22
+#   shell: cd ~/ && pwd && git clone https://github.com/Shamil-G/{{ jenkans }}.git
+    when: not stat_dir.stat.exists   
+
+  - name: Update local repository
+    shell: cd ~/{{ jenkans }} && git pull &&  git config --list
 
 http://repository.ecc.kz/isgp/public_dev_isbp.git
