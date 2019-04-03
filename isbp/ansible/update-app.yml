@@ -17,12 +17,6 @@
     file: 
       path: "{{ app_dir }}"
       state: directory    
-
-  - name: Check exist (create) project`s deployments directory {{ deployments_dir }}
-    hosts: web-isbp
-    file: 
-      path: "{{ deployments_dir }}"
-      state: directory    
       
   - name: Cloning from repository
     git:
