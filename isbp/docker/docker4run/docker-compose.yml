@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.yml
       args:
         buildno: 1
-#     command: ./start.bat
+    command: bin/standalone.sh
     tty: true
     env_file:
       - ./common.env
@@ -14,10 +14,10 @@ services:
     ports:
       - "10000:10000"
       - "8082:80"
-#     volumes:
-#       - type: bind
-#         source: /home/ansible/docker-projects/egz-mf/app
-#         target: /usr/local/nginx/html
+    volumes:
+      - type: bind
+        source: /home/ansible/docker-projects/isbp/logs
+        target: /usr/local/wildfly/standalone/log
     network_mode: bridge
     domainname: isbp-test.kz
     hostname: app
