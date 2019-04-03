@@ -1,10 +1,13 @@
 - name: Open firewall ports
   hosts: web-isbp
   become: yes
+  vars:
+    project_port: "{{ lookup('env','PROJECT_PORT') }}" 
+    admin_port: "{{ lookup('env','ADMIN_PORT') }}" 
   
   tasks:
   - name: Add open ports to firewall
-    shell: firewall-cmd --permanent --add-port=8082/tcp && firewall-cmd --permanent --add-port=8082/tcp
+    shell: firewall-cmd --permanent --add-port={{ project_port }}/tcp && firewall-cmd --permanent --add-port={{ admin_port }}/tcp
 
   - name: Reload firewall
     shell: firewall-cmd --reload
