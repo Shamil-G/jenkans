@@ -1,7 +1,6 @@
 FROM centos
 
-RUN yum -y install zip unzip mc
-ADD wf.zip /usr/local/wildfly/wf.zip
-RUN unzip /usr/local/wildfly/wf.zip
+RUN yum -y install zip && yum -y install unzip && yum -y install mc
+ADD wildfly.tar /usr/local/
 
 CMD ["/bin/bash"]
