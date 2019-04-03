@@ -5,7 +5,7 @@
   vars:
     project_name: "{{ lookup('env','PROJECT_NAME') }}"
     project_port: "{{ lookup('env','PROJECT_PORT') }}"
-    app_dir: /home/jenkins/projects/{{ project_name }}
+    app_dir: /home/jenkins/projects/{{ project_name }}/isbp
     deployments_dir: /home/ansible/docker-projects/{{ project_name }}/deployments
 
   tasks:
