@@ -1,5 +1,0 @@
-FROM centos-wf
-
-RUN yum -y install zip unzip mc
-
-CMD ["/bin/bash"]
