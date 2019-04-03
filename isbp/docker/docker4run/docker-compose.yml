@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.yml
       args:
         buildno: 1
-    command: bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 &
+    command: bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0
     tty: true
     env_file:
       - ./common.env
