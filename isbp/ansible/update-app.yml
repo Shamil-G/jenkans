@@ -27,7 +27,7 @@
   - name: Cloning from repository
     git:
       repo: 'http://repository.ecc.kz/isgp/public_dev_isbp.git'
-      dest: {{ app_dir }}
+      dest: "{{ app_dir }}"
     when: not stat_git.stat.exists   
 
   - name: Pulling from repository
