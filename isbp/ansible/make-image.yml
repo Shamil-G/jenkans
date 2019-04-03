@@ -7,13 +7,20 @@
     src_dir: /home/jenkins/jenkans/{{ project_name }}/docker/
     dest_dir: /home/ansible/docker-projects/{{ project_name }}/
     src_wf: /home/jenkins/projects/{{ project_name }}/
+    deployments_dir: /home/ansible/docker-projects/{{ project_name }}/deployments
+
  
   tasks:
   - name: Check exist (create) project directory {{ dest_dir }}
     file: 
       path: "{{ dest_dir }}/logs"
       state: directory
-      
+
+  - name: Check exist (create) project`s deployments directory {{ deployments_dir }}
+    file: 
+      path: "{{ deployments_dir }}"
+      state: directory   
+
   - name: Copy JENKANS files to remote servers for create Image
     copy: src={{ src_dir }} dest={{ dest_dir }}
 
