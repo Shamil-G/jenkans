@@ -1,44 +1,46 @@
 ---
-- name: -----> Initialization Git for Ansible
-  hosts: web-isbp
-  vars: 
-    jenkans: jenkans
-   
+- name: -----> Initialization Git for Application
+  hosts: localhost
+  become: yes
+  vars:
+    project_name: "{{ lookup('env','PROJECT_NAME') }}"
+    project_port: "{{ lookup('env','PROJECT_PORT') }}"
+    app_dir: /home/jenkins/projects/{{ project_name }}
+    deployments_dir: /home/ansible/docker-projects/{{ project_name }}/deployments
 
-
-  tasks: 
-  - name: Check exists GIT dir
-    stat: path=~/{{ jenkans }}
-    register: stat_dir
-  
-  - name: Create GIT dir
-    shell: mkdir -p ~/{{ jenkans }}
-    when: not stat_dir.stat.exists
-    
+  tasks:
   - name: Check exists Git
-    stat: path=/usr/bin/git
+    stat: path="{{ app_dir }}"
     register: stat_git
-
-  - block:
     
-    - name: Install GIT
-      shell: sudo yum install git
-   
-    - name: Configure Repository
-      shell: git config --global user.name 'Shamil-G' && git config --global user.email 's.gusseynov@gmail.com'
+  - name: Check exist (create) project`s app directory {{ app_dir }}
+    file: 
+      path: "{{ app_dir }}"
+      state: directory    
 
-    when: not stat_git.stat.exists
-
-  - name: Cloning repository
+  - name: Check exist (create) project`s deployments directory {{ deployments_dir }}
+    hosts: web-isbp
+    file: 
+      path: "{{ deployments_dir }}"
+      state: directory    
+      
+  - name: Cloning from repository
     git:
-      repo: 'https://github.com/Shamil-G/{{ jenkans }}.git'
-      dest: ~/jenkans
-#       force: yes
-#       version: release-0.22
-#   shell: cd ~/ && pwd && git clone https://github.com/Shamil-G/{{ jenkans }}.git
-    when: not stat_dir.stat.exists   
+      repo: 'http://repository.ecc.kz/isgp/public_dev_isbp.git'
+      dest: {{ app_dir }}
+    when: not stat_git.stat.exists   
 
-  - name: Update local repository
-    shell: cd ~/{{ jenkans }} && git pull &&  git config --list
+  - name: Pulling from repository
+    shell: cd {{ app_dir }} && git pull &&  git config --list
+    when: stat_git.stat.exists   
+       
+#   - name: Stopping service {{ project_name }}
+#     shell: cd {{ home_dir }} && docker-compose stop {{ project_name }}   
 
-http://repository.ecc.kz/isgp/public_dev_isbp.git
+#   - name: Starting docker-compose
+#     shell: cd {{ home_dir }} && docker-compose up -d --build
+    
+#   - name: Starting service {{ project_name }}
+#     shell: cd {{ home_dir }} && docker-compose start {{ project_name }}
+
+  
