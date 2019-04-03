@@ -12,8 +12,8 @@ services:
       - ./common.env
       - ./app.env
     ports:
-      - "$ADMIN_PORT:10000"
-      - "$PROJECT_PORT:80"
+      - "${ADMIN_PORT}:10000"
+      - "${PROJECT_PORT}:80"
     volumes:
       - type: bind
         source: /home/ansible/docker-projects/isbp/logs
