@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.yml
       args:
         buildno: 1
-    command: ./start.bat
+#     command: ./start.bat
     tty: true
     env_file:
       - ./common.env
