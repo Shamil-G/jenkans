@@ -1,5 +1,6 @@
 - name: Run Service 
   hosts: web-isbp
+  become: yes
   vars:
     project_name: "{{ lookup('env','PROJECT_NAME') }}"
     project_port: "{{ lookup('env','PROJECT_PORT') }}"
