@@ -21,7 +21,6 @@
     
     - name: Install GIT
       shell: sudo yum install git
-
     
     - name: Configure Repository
       shell: git config --global user.name 'Shamil-G' && git config --global user.email 's.gusseynov@gmail.com'
