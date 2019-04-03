@@ -4,7 +4,7 @@
   
   tasks:
   - name: Add open ports to firewall
-    shell: firewall-cmd --permanent --add-port=8082/tcp
+    shell: firewall-cmd --permanent --add-port=8082/tcp && firewall-cmd --permanent --add-port=8082/tcp
 
   - name: Reload firewall
     shell: firewall-cmd --reload
