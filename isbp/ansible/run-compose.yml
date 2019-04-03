@@ -5,7 +5,7 @@
     project_port: "{{ lookup('env','PROJECT_PORT') }}"
     home_dir: /home/ansible/docker-projects/{{ project_name }}/docker4run/   
     logs_dir: /home/ansible/docker-projects/{{ project_name }}/logs
-    deployments_dir: /home/jenkins/projects/{{ project_name }}/deployments
+    deployments_dir: /home/ansible/docker-projects/{{ project_name }}/deployments
 
   tasks:
   - name: Check exist (create) project`s logs directory {{ logs_dir }}
