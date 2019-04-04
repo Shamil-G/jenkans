@@ -25,7 +25,7 @@
       group: jenkins
       mode: 0777
 
-  - name: Cloning from repository
+  - name: Cloning from repository {{ repository }}
     git:
       repo: "{{ repository }}"
       dest: "{{ app_dir }}"
