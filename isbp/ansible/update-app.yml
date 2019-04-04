@@ -5,7 +5,7 @@
   vars:
     project_name: "{{ lookup('env','PROJECT_NAME') }}"
     project_port: "{{ lookup('env','PROJECT_PORT') }}"
-    repository: "{{ lookup('env','REPO') }}"
+    repo: "{{ lookup('env','REPO') }}"
     app_dir: /home/jenkins/projects/{{ project_name }}/repo
     deployments_dir: /home/ansible/docker-projects/{{ project_name }}/deployments
 
@@ -26,7 +26,8 @@
 #       mode: 0777
 
   - name: Cloning from repository {{ repository }}
-    shell: mkdir -p {{ app_dir }} && cd {{ app_dir }} && git init && git clone git@repository.ecc.kz:isgp/public_dev_isbp.git
+    shell: mkdir -p {{ app_dir }} && cd {{ app_dir }} && git init && git clone {{ repo }}
+#     shell: mkdir -p {{ app_dir }} && cd {{ app_dir }} && git init && git clone git@repository.ecc.kz:isgp/public_dev_isbp.git
     when: not stat_git.stat.exists   
     
 #   git:
