@@ -36,7 +36,7 @@
 #     when: not stat_git.stat.exists   
 
   - name: Pulling from repository
-    shell: cd {{ app_dir }}/public_dev_isbp && git pull &&  git config --list
+    shell: cd {{ app_dir }}/public_dev_isbp && git pull {{ repo }}
     when: stat_git.stat.exists   
        
 #   - name: Stopping service {{ project_name }}
