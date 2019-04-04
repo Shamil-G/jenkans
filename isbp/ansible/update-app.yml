@@ -13,8 +13,8 @@
   - name: Check repo
     debug: vars={{ repository }}
     
-  - name: Configure Repository
-    shell: git config --global user.name 'CI' && git config --global user.email 's.gusseynov@gmail.com'
+#   - name: Configure Repository
+#     shell: git config --global user.name 'CI' && git config --global user.email 's.gusseynov@gmail.com'
 
   - name: Check exists Git
     stat: path="{{ app_dir }}"
