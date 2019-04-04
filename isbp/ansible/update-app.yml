@@ -20,7 +20,7 @@
     register: stat_module1
     
   - block
-    - name: Create dir for mavens`s modules
+    - name: Create dir for mavens modules
       file: 
         path: "~/.m2/repository"
         state: directory    
@@ -28,7 +28,7 @@
         group: jenkins
         mode: 0777
         
-    - name: Unzip modules for maven`s into ~/.m2/repository
+    - name: Unzip modules for mavens into ~/.m2/repository
       shell: unzip {{ app_dir }}/kz.zip -d ~/m2/repository      
     when: not stat_module1.stat.exists
  
