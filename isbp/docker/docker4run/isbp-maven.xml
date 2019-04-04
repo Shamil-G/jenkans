@@ -1,0 +1,22 @@
+<settings>
+<profiles>
+<profile>
+    <id>docker151</id>
+    <properties>
+        <wildfly-hostname>192.168.200.151</wildfly-hostname>
+        <wildfly-port>10000</wildfly-port>
+        <wildfly-username>wildflyadm</wildfly-username>
+        <wildfly-password>wildflyadm</wildfly-password>
+    </properties>
+</profile>
+<profile>
+    <id>docker149</id>
+    <properties>
+        <wildfly-hostname>192.168.200.149</wildfly-hostname>
+        <wildfly-port>10000</wildfly-port>
+        <wildfly-username>wildflyadm</wildfly-username>
+        <wildfly-password>wildflyadm</wildfly-password>
+    </properties>
+</profile>
+</profiles>
+</settings>
