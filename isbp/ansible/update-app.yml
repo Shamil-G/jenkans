@@ -29,7 +29,7 @@
         mode: 0777
         
     - name: Unzip modules for mavens into ~/.m2/repository
-      shell: unzip {{ app_dir }}/kz.zip -d ~/m2/repository      
+      shell: unzip {{ app_dir }}/kz.zip -d ~/.m2/repository      
     when: not stat_module1.stat.exists
  
   - block:
