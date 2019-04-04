@@ -1,4 +1,4 @@
----
+2---
 - name: -----> Initialization Git for Application
   hosts: localhost
 #   become: yes
@@ -20,19 +20,22 @@
     stat: path="{{ app_dir }}"
     register: stat_git
           
-  - name: Check exist (create) project`s app directory {{ app_dir }}
-    file: 
-      path: "{{ app_dir }}"
-      state: directory    
-      owner: jenkins
-      group: jenkins
-      mode: 0777
+#   - name: Check exist (create) project`s app directory {{ app_dir }}
+#     file: 
+#       path: "{{ app_dir }}"
+#       state: directory    
+#       owner: jenkins
+#       group: jenkins
+#       mode: 0777
 
   - name: Cloning from repository {{ repository }}
-    git:
-      repo: "{{ repository }}"
-      dest: "{{ app_dir }}"
+    shell: mkdir -p {{ app_dir }} && cd {{ app_dir }} && git init && git clone git@repository.ecc.kz:isgp/public_dev_isbp.git
     when: not stat_git.stat.exists   
+    
+#   git:
+#       repo: "{{ repository }}"
+#       dest: "{{ app_dir }}"
+#     when: not stat_git.stat.exists   
 
   - name: Pulling from repository
     shell: cd {{ app_dir }} && git pull &&  git config --list
