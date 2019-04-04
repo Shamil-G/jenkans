@@ -21,6 +21,9 @@
     file: 
       path: "{{ app_dir }}"
       state: directory    
+      owner: jenkins
+      group: jenkins
+      mode: 0777
 
   - name: Cloning from repository
     git:
