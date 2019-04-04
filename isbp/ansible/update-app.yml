@@ -19,7 +19,7 @@
     stat: path="~/.m2/repository/kz"
     register: stat_module1
     
-  - block
+  - block:
     - name: Create dir for mavens modules
       file: 
         path: "~/.m2/repository"
@@ -32,7 +32,7 @@
       shell: unzip {{ app_dir }}/kz.zip -d ~/m2/repository      
     when: not stat_module1.stat.exists
  
-  - block
+  - block:
     - name: Check exist (create) project`s app directory {{ app_dir }}
       file: 
         path: "{{ repo_dir }}"
