@@ -10,6 +10,9 @@
     deployments_dir: /home/ansible/docker-projects/{{ project_name }}/deployments
 
   tasks:
+  - name: Check repo
+    debug: vars={{ repository }}
+    
   - name: Configure Repository
     shell: git config --global user.name 'CI' && git config --global user.email 's.gusseynov@gmail.com'
 
