@@ -3,7 +3,11 @@
   become: yes
   
   tasks:
-  
+  - name: set ntp
+    yum: 
+      name=ntp
+      state=present
+   
   - name: Install Docker
     service: name=docker state=started enabled=yes
     register: res
