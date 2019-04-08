@@ -1,5 +1,5 @@
 FROM centos-wf
 
-WORKDIR /usr/local/wildfly
+#WORKDIR /usr/local/wildfly
 
 CMD ["/bin/bash"]
