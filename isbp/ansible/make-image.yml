@@ -24,8 +24,8 @@
   - name: Copy JENKANS files to remote servers for create Image
     copy: src={{ src_dir }} dest={{ dest_dir }}
 
-  - name: Copy WildFly files to remote servers for add to Image
-    copy: src={{ src_wf }} dest={{ dest_dir }}/docker4wf/
+#   - name: Copy WildFly files to remote servers for add to Image
+#     copy: src={{ src_wf }} dest={{ dest_dir }}/docker4wf/
 
   - name: Make image with Wildfly
     shell: cd {{ dest_dir }}docker4wf && sudo docker build -f Dockerfile-4wf.yml --rm -t centos-wf .
