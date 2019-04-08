@@ -5,11 +5,6 @@
     jenkans: jenkans
   
   tasks: 
-  - name: set ntp
-    yum: 
-      name=ntp
-      state=present
-    
   - name: Check exists GIT dir
     stat: path=~/{{ jenkans }}
     register: stat_dir
