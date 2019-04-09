@@ -3,12 +3,12 @@
   become: yes
   vars:
     project_name: "{{ lookup('env','PROJECT_NAME') }}" 
-    kz_zip: ~/projects/{{ project_name }}/kz.zip
-    isbp_maven: ~/jenkans/{{ project_name }}/docker/dokcer4run/isbp-maven.xml
+    kz_zip: /home/jenkins/projects/{{ project_name }}/kz.zip
+    isbp_maven: /home/jenkins/jenkans/{{ project_name }}/docker/dokcer4run/isbp-maven.xml
 
-  - name: Check ~/.m2 project directory
+  - name: Check exist .m2/repository project directory
     stat: 
-      path: "~/.m2/repository/kz"
+      path: "/home/jenkins/.m2/repository/kz"
     register: m2_stat
 
   - name: Check exists isbp maven file in /etc/maven dir
