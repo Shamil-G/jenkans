@@ -2,44 +2,11 @@
   hosts: web-isbp
   become: yes
   vars:
-    project_name: "{{ lookup('env','PROJECT_NAME') }}" 
     project_port: "{{ lookup('env','PROJECT_PORT') }}" 
     admin_port: "{{ lookup('env','ADMIN_PORT') }}" 
-    kz_zip: ~/projects/{{ project_name }}/kz.zip
-    isbp_maven: ~/jenkans/{{ project_name }}/docker/dokcer4run/isbp-maven.xml
+
   
   tasks:
-  - name: Check ~/.m2 project directory
-    stat: 
-      path: "~/.m2/repository/kz"
-    register: m2_stat
-
-  - name: Check exists isbp maven file in /etc/maven dir
-    stat: 
-      path: "/etc/maven/isbp.xml"
-    register: maven_stat
-    
-  - block:
-    - name: Create directory /etc/maven
-      file: 
-        path: /etc/maven
-        state: directory
-        
-    - name: Copy Maven file
-      copy: src={{ isbp_maven }} dest=/etc/maven/isbp.xml
-    when: not maven.stat.exists 
-    
-  - block:
-    - name: Check ~/.m2 project directory
-      file: 
-        path: "~/.m2/repository/kz"
-        state: directory
-        
-    - name: create .m2 directory
-      shell: unzip -d ~/.m2/repository {{ kz_zip }} 
-    when: not m2_stat.stat.exists
-      
-    
   - name: Add open ports to firewall
     shell: firewall-cmd --permanent --add-port={{ project_port }}/tcp && firewall-cmd --permanent --add-port={{ admin_port }}/tcp
 
