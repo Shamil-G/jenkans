@@ -1,0 +1,31 @@
+
+
+  - name: Check ~/.m2 project directory
+    stat: 
+      path: "~/.m2/repository/kz"
+    register: m2_stat
+
+  - name: Check exists isbp maven file in /etc/maven dir
+    stat: 
+      path: "/etc/maven/isbp.xml"
+    register: maven_stat
+    
+  - block:
+    - name: Create directory /etc/maven
+      file: 
+        path: /etc/maven
+        state: directory
+        
+    - name: Copy Maven file
+      copy: src={{ isbp_maven }} dest=/etc/maven/isbp.xml
+    when: not maven.stat.exists 
+    
+  - block:
+    - name: Check ~/.m2 project directory
+      file: 
+        path: "~/.m2/repository/kz"
+        state: directory
+        
+    - name: create .m2 directory
+      shell: unzip -d ~/.m2/repository {{ kz_zip }} 
+when: not m2_stat.stat.exists
