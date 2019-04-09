@@ -1,4 +1,10 @@
-
+- name: -----> Prepare LOCALHOST
+  hosts: localhost
+  become: yes
+  vars:
+    project_name: "{{ lookup('env','PROJECT_NAME') }}" 
+    kz_zip: ~/projects/{{ project_name }}/kz.zip
+    isbp_maven: ~/jenkans/{{ project_name }}/docker/dokcer4run/isbp-maven.xml
 
   - name: Check ~/.m2 project directory
     stat: 
@@ -28,4 +34,4 @@
         
     - name: create .m2 directory
       shell: unzip -d ~/.m2/repository {{ kz_zip }} 
-when: not m2_stat.stat.exists
+    when: not m2_stat.stat.exists
