@@ -9,12 +9,16 @@
   
   tasks:
   - name: Check ~/.m2 project directory
-    file: 
+    stat: 
       path: "~/.m2/repository/kz"
-      state: directory
     register: m2_stat
       
   - block:
+    - name: Check ~/.m2 project directory
+      file: 
+        path: "~/.m2/repository/kz"
+        state: directory
+        
     - name: create .m2 directory
       shell: unzip -d ~/.m2/repository {{ kz_zip }} 
     when: not m2_stat.stat.exists
