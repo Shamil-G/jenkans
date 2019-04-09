@@ -13,7 +13,7 @@
     file: 
       path: "{{ logs_dir }}"
       state: directory    
-      
+
   - name: Check exist (create) project`s deployments directory {{ deployments_dir }}
     file: 
       path: "{{ deployments_dir }}"
