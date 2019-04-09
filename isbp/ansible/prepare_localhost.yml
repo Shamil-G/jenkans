@@ -4,8 +4,9 @@
   vars:
     project_name: "{{ lookup('env','PROJECT_NAME') }}" 
     kz_zip: /home/jenkins/projects/{{ project_name }}/kz.zip
-    isbp_maven: /home/jenkins/jenkans/{{ project_name }}/docker/dokcer4run/isbp-maven.xml
-
+    isbp_maven: /home/jenkins/jenkans/{{ project_name }}/docker/docker4run/isbp-maven.xml
+  
+  tasks:
   - name: Check exist .m2/repository project directory
     stat: 
       path: "/home/jenkins/.m2/repository/kz"
@@ -24,7 +25,7 @@
         
     - name: Copy Maven file
       copy: src={{ isbp_maven }} dest=/etc/maven/isbp.xml
-    when: not maven.stat.exists 
+    when: not maven_stat.stat.exists 
     
   - block:
     - name: Check ~/.m2 project directory
