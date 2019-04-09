@@ -2,10 +2,24 @@
   hosts: web-isbp
   become: yes
   vars:
+    project_name: "{{ lookup('env','PROJECT_NAME') }}" 
     project_port: "{{ lookup('env','PROJECT_PORT') }}" 
     admin_port: "{{ lookup('env','ADMIN_PORT') }}" 
+    kz_zip: ~/projects/{{ project_name }}/kz.zip
   
   tasks:
+  - name: Check ~/.m2 project directory
+    file: 
+      path: "~/.m2/repository/kz"
+      state: directory
+      register: m2_stat
+      
+  - block:
+    - name: create .m2 directory
+      shell: unzip -d ~/.m2/repository {{ kz_zip }} 
+    when: not m2_stat.stat.exists
+      
+    
   - name: Add open ports to firewall
     shell: firewall-cmd --permanent --add-port={{ project_port }}/tcp && firewall-cmd --permanent --add-port={{ admin_port }}/tcp
 
