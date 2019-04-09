@@ -6,7 +6,7 @@
     project_name: "{{ lookup('env','PROJECT_NAME') }}" 
     src_dir: /home/jenkins/jenkans/{{ project_name }}/docker/
     dest_dir: /home/ansible/docker-projects/{{ project_name }}/
-    src_wf: /home/jenkins/projects/{{ project_name }}/
+    src_wf: /home/jenkins/projects/{{ project_name }}
 
   tasks:
   - name: Check exist (create) project directory {{ dest_dir }}
@@ -18,7 +18,7 @@
     copy: src={{ src_dir }} dest={{ dest_dir }}
 
   - name: Copy WildFly files to remote servers for add to Image
-    copy: src={{ src_wf }} dest={{ dest_dir }}/docker4wf/
+    copy: src={{ src_wf }}/wildfly.tar dest={{ dest_dir }}/docker4wf/
 
   - name: Make image with Wildfly
     shell: cd {{ dest_dir }}docker4wf && sudo docker build -f Dockerfile-4wf.yml --rm -t centos-wf .
