@@ -1,4 +1,5 @@
 --- 
+- import_playbook: /home/jenkins/jenkans/isbp/ansible/prepare_localhost.yml
 - import_playbook: /home/jenkins/jenkans/isbp/ansible/make-image.yml
 - import_playbook: /home/jenkins/jenkans/isbp/ansible/open-ports.yml
 - import_playbook: /home/jenkins/jenkans/isbp/ansible/run-compose.yml
