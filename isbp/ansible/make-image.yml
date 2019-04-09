@@ -7,9 +7,7 @@
     src_dir: /home/jenkins/jenkans/{{ project_name }}/docker/
     dest_dir: /home/ansible/docker-projects/{{ project_name }}/
     src_wf: /home/jenkins/projects/{{ project_name }}/
-    deployments_dir: /home/ansible/docker-projects/{{ project_name }}/deployments
 
- 
   tasks:
   - name: Check exist (create) project directory {{ dest_dir }}
     file: 
