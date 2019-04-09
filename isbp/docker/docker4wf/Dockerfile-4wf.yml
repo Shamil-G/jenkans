@@ -1,7 +1,7 @@
-# FROM centos
-FROM jboss/wildfly
+FROM centos
+# FROM jboss/wildfly
 
-# RUN yum -y install zip && yum -y install unzip && yum -y install mc && yum -y install java && yum -y install telnet
-# ADD wildfly.tar /usr/local/
+RUN yum -y install zip && yum -y install unzip && yum -y install mc && yum -y install java && yum -y install telnet
+ADD wildfly.tar /usr/local/
 
-# CMD ["/bin/bash"]
+CMD ["/bin/bash"]
