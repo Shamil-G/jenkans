@@ -12,7 +12,7 @@
     file: 
       path: "~/.m2/repository/kz"
       state: directory
-      register: m2_stat
+    register: m2_stat
       
   - block:
     - name: create .m2 directory
