@@ -1,5 +1,5 @@
 ---
-- name: Make Image for EGZ MF
+- name: -----> Make Image for ISBP MF
   hosts: web-isbp
   become: yes
   vars:
@@ -19,6 +19,12 @@
 
   - name: Copy WildFly files to remote servers for add to Image
     copy: src={{ src_wf }}/wildfly.tar dest={{ dest_dir }}/docker4wf/
+
+  - name: Stopping isbp service and remove old container
+    shell: cd {{ dest_dir }}docker4run && docker-compose stop {{ project_name }} 
+    
+  - name: Removing old container and image
+    shell: docker container prune && docker rmi centos-wf
 
   - name: Make image with Wildfly
     shell: cd {{ dest_dir }}docker4wf && sudo docker build -f Dockerfile-4wf.yml --rm -t centos-wf .
