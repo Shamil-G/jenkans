@@ -7,7 +7,6 @@
     repo: "{{ lookup('env','REPO') }}"
     repo_dir: "/home/jenkins/projects/{{ project_name }}/repo"
     repo_home: "{{ repo_dir }}/{{ repo_name }}"
-#     repo_home: "{{ repo_dir }}/public_dev_isbp"
   
   tasks:
   - name: Check exists Git
@@ -49,47 +48,47 @@
     when: stat_git.stat.exists   
 
   - name: Deploying ISBP module to 149 with Maven
-    shell: mvn -f {{ repo_home }}/isbp/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker149
+    shell: mvn -f {{ repo_home }}/isbp/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker149
   - name: Deploying ISBP module to 151 with Maven
-    shell: mvn -f {{ repo_home }}/isbp/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker151
+    shell: mvn -f {{ repo_home }}/isbp/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker151
     
   - name: Deploying ISBP-ADMIN module to 149 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-admin/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker149
+    shell: mvn -f {{ repo_home }}/isbp-admin/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker149
   - name: Deploying ISBP-ADMIN module to 151 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-admin/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker151
+    shell: mvn -f {{ repo_home }}/isbp-admin/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker151
 
   - name: Deploying ISBP-BALANCE module to 149 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-balance/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker149
+    shell: mvn -f {{ repo_home }}/isbp-balance/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker149
   - name: Deploying ISBP-BALANCE module to 151 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-balance/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker151
+    shell: mvn -f {{ repo_home }}/isbp-balance/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker151
 
   - name: Deploying ISBP-BALANCE module to 149 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-balance/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker149
+    shell: mvn -f {{ repo_home }}/isbp-balance/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker149
   - name: Deploying ISBP-BALANCE module to 151 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-balance/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker151
+    shell: mvn -f {{ repo_home }}/isbp-balance/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker151
 
   - name: Deploying ISBP-LIMITS module to 149 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-limits/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker149
+    shell: mvn -f {{ repo_home }}/isbp-limits/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker149
   - name: Deploying ISBP-LIMITS module to 151 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-limits/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker151
+    shell: mvn -f {{ repo_home }}/isbp-limits/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker151
 
   - name: Deploying ISBP-PP module to 149 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-pp/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker149
+    shell: mvn -f {{ repo_home }}/isbp-pp/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker149
   - name: Deploying ISBP-PP module to 151 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-pp/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker151
+    shell: mvn -f {{ repo_home }}/isbp-pp/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker151
 
   - name: Deploying ISBP-RBK module to 149 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-rbk/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker149
+    shell: mvn -f {{ repo_home }}/isbp-rbk/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker149
   - name: Deploying ISBP-RBK module to 151 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-rbk/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker151
+    shell: mvn -f {{ repo_home }}/isbp-rbk/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker151
 
   - name: Deploying ISBP-STAFF module to 149 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-staff/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker149
+    shell: mvn -f {{ repo_home }}/isbp-staff/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker149
   - name: Deploying ISBP-STAFF module to 151 with Maven
-    shell: mvn -f {{ repo_home }}/isbp-staff/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker151
+    shell: mvn -f {{ repo_home }}/isbp-staff/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker151
 
   - name: Deploying ISBP-LAUNCHER module to 149 with Maven
-    shell: mvn -f {{ repo_home }}/task-launcher/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker149
+    shell: mvn -f {{ repo_home }}/task-launcher/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker149
   - name: Deploying ISBP-LAUNCHER module to 151 with Maven
-    shell: mvn -f {{ repo_home }}/task-launcher/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-sesttings.xml wildfly:deploy -Pdocker151
+    shell: mvn -f {{ repo_home }}/task-launcher/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker151
     
