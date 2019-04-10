@@ -5,10 +5,10 @@
     project_name: "{{ lookup('env','PROJECT_NAME') }}"
     repo_name: "{{ lookup('env','REPO_NAME') }}"
     repo: "{{ lookup('env','REPO') }}"
-    repo_dir: /home/jenkins/projects/{{ project_name }}/repo
-#     repo_home: {{ repo_dir }}/{{ repo_name }}
-    repo_home: {{ repo_dir }}/public_dev_isbp
-
+    repo_dir: "/home/jenkins/projects/{{ project_name }}/repo"
+    repo_home: "{{ repo_dir }}/{{ repo_name }}"
+#     repo_home: "{{ repo_dir }}/public_dev_isbp"
+  
   tasks:
   - name: Check exists Git
     stat: path="{{ repo_dir }}"
