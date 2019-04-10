@@ -1,1 +1,0 @@
-sudo docker build -f Dockerfile-4gcc -t my-gcc .
