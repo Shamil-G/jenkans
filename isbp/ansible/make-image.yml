@@ -24,7 +24,7 @@
     shell: cd {{ dest_dir }}docker4run && docker-compose stop {{ project_name }} 
     
   - name: Removing old container and image
-    shell: docker container prune && docker rmi centos-wf
+    shell: docker container prune && docker rmi centos-wf && docker image prune
 
   - name: Make image with Wildfly
     shell: cd {{ dest_dir }}docker4wf && sudo docker build -f Dockerfile-4wf.yml --rm -t centos-wf .
