@@ -9,4 +9,4 @@
     shell: cd {{ home_dir }} && docker-compose stop {{ project_name }} && docker container prune -f && docker image prune -f 
   
   - name: Starting service {{ project_name }}
-    shell: cd {{ home_dir }} && docker-compose start {{ project_name }}
+    shell: cd {{ home_dir }} && docker-compose up -d
