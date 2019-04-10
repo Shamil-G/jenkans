@@ -91,4 +91,6 @@
     shell: mvn -f {{ repo_home }}/task-launcher/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker149
   - name: Deploying ISBP-LAUNCHER module to 151 with Maven
     shell: mvn -f {{ repo_home }}/task-launcher/pom.xml -s /etc/maven/{{ project_name }}.xml -gs /etc/maven/{{ project_name }}-settings.xml wildfly:deploy -Pdocker151
+
+- import_playbook: /home/jenkins/jenkans/isbp/ansible/restart-service.yml    
     
