@@ -1,4 +1,4 @@
-- name: Run Service 
+- name: -----> Create new Service ISBP and run one
   hosts: web-isbp
   become: yes
   vars:
@@ -20,11 +20,10 @@
       state: directory    
 
   - name: Stopping service {{ project_name }}
-    shell: cd {{ home_dir }} && docker-compose stop {{ project_name }}   
+    shell: cd {{ home_dir }} && docker-compose stop {{ project_name }} && docker container prune -f && docker image prune -f 
 
-  - name: Starting docker-compose
+  - name: Building service {{ project_name }} with docker-compose 
     shell: cd {{ home_dir }} && docker-compose up -d --build
     
   - name: Starting service {{ project_name }}
     shell: cd {{ home_dir }} && docker-compose start {{ project_name }}
-    
