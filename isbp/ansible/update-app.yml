@@ -1,5 +1,5 @@
 ---
-- name: -----> Initialization Git for Application
+- name: -----> Initialization Git for Application and Make and Deploying Application
   hosts: localhost
   vars:
     project_name: "{{ lookup('env','PROJECT_NAME') }}"
