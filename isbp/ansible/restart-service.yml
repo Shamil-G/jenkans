@@ -1,11 +1,11 @@
-- name: -----> Create new Service ISBP and run one
+- name: -----> Restart Service ISBP
   hosts: web-isbp
   become: yes
   vars:
     project_name: "{{ lookup('env','PROJECT_NAME') }}"
     home_dir: /home/ansible/docker-projects/{{ project_name }}/docker4run/   
   tasks:
-  - name: Stopping service {{ project_name }}
+  - name: Stopping service {{ project_name }} with prune zombi containers and zombi images
     shell: cd {{ home_dir }} && docker-compose stop {{ project_name }} && docker container prune -f && docker image prune -f 
   
   - name: Starting service {{ project_name }}
