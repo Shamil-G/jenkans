@@ -4,8 +4,8 @@
   vars:
     project_name: "{{ lookup('env','PROJECT_NAME') }}" 
     kz_zip: /home/jenkins/projects/{{ project_name }}/kz.zip
-    isbp_maven: /home/jenkins/jenkans/{{ project_name }}/docker/docker4run/isbp-maven.xml
-    isbp_maven_gs: /home/jenkins/jenkans/{{ project_name }}/docker/docker4run/isbp-settings.xml
+    maven_s: /home/jenkins/jenkans/{{ project_name }}/docker/docker4run/{{ project_name }}-maven.xml
+    maven_gs: /home/jenkins/jenkans/{{ project_name }}/docker/docker4run/{{ project_name }}-settings.xml
   
   tasks:
   - name: Check exist .m2/repository project directory
@@ -15,12 +15,12 @@
 
   - name: Check exists isbp maven file in /etc/maven dir
     stat: 
-      path: "/etc/maven/isbp.xml"
+      path: "/etc/maven/{{ project_name }}.xml"
     register: maven_stat
     
   - name: Check exists isbp maven file in /etc/maven dir
     stat: 
-      path: "/etc/maven/isbp-settings.xml"
+      path: "/etc/maven/{{ project_name }}-settings.xml"
     register: maven_stat_gs
     
   - block:
@@ -30,10 +30,10 @@
         state: directory
         
     - name: Copy Maven file
-      copy: src={{ isbp_maven }} dest=/etc/maven/isbp.xml
+      copy: src={{ maven_s }} dest=/etc/maven/{{ project_name }}.xml
 
     - name: Copy Maven GS file
-      copy: src={{ isbp_maven_gs }} dest=/etc/maven/
+      copy: src={{ maven_gs }} dest=/etc/maven/
     when: not maven_stat.stat.exists or not maven_stat_gs.stat.exists
     
   - block:
@@ -44,4 +44,4 @@
         
     - name: create .m2 directory
       shell: unzip -d ~/.m2/repository {{ kz_zip }} 
-    when: not m2_stat.stat.exists
+      when: not m2_stat.stat.exists
