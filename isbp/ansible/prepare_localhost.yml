@@ -5,6 +5,7 @@
     project_name: "{{ lookup('env','PROJECT_NAME') }}" 
     kz_zip: /home/jenkins/projects/{{ project_name }}/kz.zip
     isbp_maven: /home/jenkins/jenkans/{{ project_name }}/docker/docker4run/isbp-maven.xml
+    isbp_maven_gs: /home/jenkins/jenkans/{{ project_name }}/docker/docker4run/isbp-settings.xml
   
   tasks:
   - name: Check exist .m2/repository project directory
@@ -17,6 +18,11 @@
       path: "/etc/maven/isbp.xml"
     register: maven_stat
     
+  - name: Check exists isbp maven file in /etc/maven dir
+    stat: 
+      path: "/etc/maven/isbp-settings.xml"
+    register: maven_stat_gs
+    
   - block:
     - name: Create directory /etc/maven
       file: 
@@ -25,7 +31,10 @@
         
     - name: Copy Maven file
       copy: src={{ isbp_maven }} dest=/etc/maven/isbp.xml
-    when: not maven_stat.stat.exists 
+
+    - name: Copy Maven GS file
+      copy: src={{ isbp_maven_gs }} dest=/etc/maven/
+    when: not maven_stat.stat.exists or not maven_stat_gs.stat.exists
     
   - block:
     - name: Check ~/.m2 project directory
