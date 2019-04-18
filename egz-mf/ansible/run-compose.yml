@@ -1,22 +1,30 @@
-- name: Run Service 
+---
+- name: -----> Create new Service EGZ MF and run one
   hosts: web-egz
+  become: yes
   vars:
     project_name: "{{ lookup('env','PROJECT_NAME') }}"
     project_port: "{{ lookup('env','PROJECT_PORT') }}"
-    homedest_dir: /home/ansible/docker-projects/{{ project_name }}/docker4run/
-    app_host_dir: /home/ansible/docker-projects/{{ project_name }}/app
-    app_docker_dir: /usr/local/nginx/html
-    nginx_dir: /usr/local/nginx/sbin
+    home_dir: /home/ansible/docker-projects/{{ project_name }}/docker4run/   
+    logs_dir: /home/ansible/docker-projects/{{ project_name }}/logs
+    deployments_dir: /home/ansible/docker-projects/{{ project_name }}/deployments
 
   tasks:
-  - name: Starting docker-compose
-    shell: cd {{ home_dir }} && docker-compose up -d
-    
+  - name: Check exist (create) project`s logs directory {{ logs_dir }}
+    file: 
+      path: "{{ logs_dir }}"
+      state: directory    
+
+  - name: Check exist (create) project`s deployments directory {{ deployments_dir }}
+    file: 
+      path: "{{ deployments_dir }}"
+      state: directory    
+
   - name: Stopping service {{ project_name }}
-    shell: cd {{ home_dir }} && docker-compose stop {{ project_name }}
+    shell: cd {{ home_dir }} && docker-compose stop {{ project_name }} && docker container prune -f && docker image prune -f 
+
+  - name: Building service {{ project_name }} with docker-compose 
+    shell: cd {{ home_dir }} && docker-compose up -d --build
     
-  - name: Starting service {{ projetc_name }}
-    shell: cd {{ home_dir }} && docker-compose start {{ project_name }}
-    
-  - name: Staring NGINX in service {{ project_name }}
-    shell: cd {{ home_dir }} && dokcer-compose run {{ project_name }} sbin/nginx
+  - name: Starting service {{ project_name }} with NGINX
+    shell: cd {{ home_dir }} && docker-compose start {{ project_name }} && docker-compose run {{ project_name }} sbin/nginx
