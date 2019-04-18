@@ -5,8 +5,8 @@ WORKDIR /usr/src/app/nginx-1.15.9
 RUN pwd && ls -al && ./configure --without-http_gzip_module && make && make install
 # RUN pwd && ls -al && ./configure --with-ld-opt=/usr/lib64 --with-cc-opt=/usr/include && make && make install
 
-ADD oci8-2.0.10.tgz /usr/src/app
-WORKDIR /usr/src/app/oci8-2.0.10
+# ADD oci8-2.0.10.tgz /usr/src/app
+# WORKDIR /usr/src/app/oci8-2.0.10
 
 ADD php-5.6.40.tar.gz /usr/src/app
 WORKDIR /usr/src/app/php-5.6.40
