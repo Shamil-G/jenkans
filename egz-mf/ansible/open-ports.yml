@@ -1,10 +1,11 @@
 - name: Open firewall ports
   hosts: web-egz
   become: yes
-  
+    project_port: "{{ lookup('env','PROJECT_PORT') }}" 
+
   tasks:
   - name: Add open ports to firewall
-    shell: firewall-cmd --permanent --add-port=8080-8081/tcp
+    shell: firewall-cmd --permanent --add-port={{ project_port }}/tcp
 
   - name: Reload firewall
     shell: firewall-cmd --reload
